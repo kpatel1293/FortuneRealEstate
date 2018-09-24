@@ -1,0 +1,68 @@
+/*
+
+Homepage Specific Stylesheet for Real Estate Website Project
+Not to be compiled on its own; imported by custom.scss
+Matthew Brewer - 9/20/2018
+
+*/
+
+// Search Billboard
+
+.search-billboard {
+    padding: 175px !important;
+    text-align: center;
+    background:url("../images/homepage-house.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.search-billboard h1 {
+    color: #fff !important;
+    font-size: 36px !important;
+    text-shadow: 0 0 10px $theme-dark;
+    margin: 0 0 5px 0 !important;
+}
+
+.search-billboard h2 {
+    color: #fff;
+    text-shadow: 0 0 10px $theme-dark;
+    margin: 0 0 25px 0;
+    font-size: 26px;
+}
+
+// Search Bar
+
+.home-search {
+    width: 75%;
+    margin: 0 auto;
+}
+
+// Seller Banner
+
+.seller-banner {
+    width:100%;
+    padding: 15px;
+    background-color: $theme-color;
+}
+
+#banner-container {
+    max-width: 1200px;
+    width:100%;
+    margin: 0 auto;
+}
+
+.seller-banner p {
+    color: #fff;
+    font-size: 24px;
+    display: inline-block;
+    margin: 0;
+    line-height: 40px;
+}
+
+.seller-banner p .bold {
+    font-weight: 500;
+}
+
+#contact-button {
+    float:right;
+}
