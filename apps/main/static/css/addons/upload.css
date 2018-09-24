@@ -1,0 +1,124 @@
+/* line 6, ../../sass/addons/upload.scss */
+.upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px dashed rgba(25, 118, 210, 0.3);
+  border-radius: 0.1875rem;
+  height: 120px;
+  cursor: pointer; }
+  /* line 17, ../../sass/addons/upload.scss */
+  .upload .upload-placeholder {
+    color: rgba(25, 118, 210, 0.5);
+    font-style: italic;
+    font-size: 0.875em; }
+  /* line 22, ../../sass/addons/upload.scss */
+  .upload:hover, .upload.is-upload-hover {
+    border-color: rgba(25, 118, 210, 0.35);
+    background-color: rgba(25, 118, 210, 0.02); }
+  /* line 27, ../../sass/addons/upload.scss */
+  .upload.is-upload-error {
+    border-color: rgba(245, 62, 83, 0.35);
+    background-color: rgba(245, 62, 83, 0.02); }
+
+/* line 32, ../../sass/addons/upload.scss */
+.upload-target {
+  background-color: rgba(25, 118, 210, 0.02);
+  border: 1px solid rgba(25, 118, 210, 0.1);
+  padding: 4px 8px; }
+  /* line 38, ../../sass/addons/upload.scss */
+  .upload-target:empty {
+    padding: 0;
+    border: none; }
+  /* line 43, ../../sass/addons/upload.scss */
+  .upload-target .upload-item {
+    display: flex;
+    font-size: 0.875em;
+    border-bottom: 1px solid rgba(17, 17, 19, 0.05);
+    padding-top: 4px;
+    padding-bottom: 4px; }
+    /* line 50, ../../sass/addons/upload.scss */
+    .upload-target .upload-item .close {
+      margin-top: 2px;
+      margin-right: 4px; }
+    /* line 54, ../../sass/addons/upload.scss */
+    .upload-target .upload-item em {
+      font-style: normal;
+      color: rgba(17, 17, 19, 0.5);
+      font-size: 0.75em;
+      margin-left: 4px; }
+    /* line 60, ../../sass/addons/upload.scss */
+    .upload-target .upload-item:last-child {
+      border-bottom-color: transparent; }
+
+/* line 66, ../../sass/addons/upload.scss */
+.upload-box {
+  margin-right: -16px;
+  margin-bottom: -16px; }
+  /* line 3, ../../sass/mixins/_utils.scss */
+  .upload-box:after {
+    content: '';
+    display: table;
+    clear: both; }
+  /* line 72, ../../sass/addons/upload.scss */
+  .upload-box .upload-item {
+    float: left;
+    width: 120px;
+    height: 120px;
+    border: 2px dashed rgba(25, 118, 210, 0.3);
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    position: relative;
+    font-size: 0;
+    line-height: 0;
+    margin-right: 16px;
+    margin-bottom: 16px; }
+    /* line 86, ../../sass/addons/upload.scss */
+    .upload-box .upload-item.is-uploaded {
+      border-style: solid;
+      border-color: rgba(25, 118, 210, 0.35); }
+    /* line 90, ../../sass/addons/upload.scss */
+    .upload-box .upload-item img {
+      position: relative;
+      z-index: 2;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      border-radius: 6px; }
+    /* line 98, ../../sass/addons/upload.scss */
+    .upload-box .upload-item .close {
+      position: absolute;
+      z-index: 3;
+      top: -4px;
+      right: -8px;
+      background-color: #f53e53;
+      color: #fff;
+      opacity: 1; }
+      /* line 106, ../../sass/addons/upload.scss */
+      .upload-box .upload-item .close:hover {
+        background-color: #111113; }
+    /* line 110, ../../sass/addons/upload.scss */
+    .upload-box .upload-item:after {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      margin-left: -12px;
+      margin-top: -20px;
+      content: '+';
+      font-size: 40px;
+      line-height: 1;
+      font-weight: normal;
+      color: rgba(25, 118, 210, 0.5); }
+    /* line 123, ../../sass/addons/upload.scss */
+    .upload-box .upload-item:hover, .upload-box .upload-item.is-upload-hover {
+      border-color: rgba(25, 118, 210, 0.35);
+      background-color: rgba(25, 118, 210, 0.02); }
+    /* line 128, ../../sass/addons/upload.scss */
+    .upload-box .upload-item.is-upload-error {
+      border-color: rgba(245, 62, 83, 0.35);
+      background-color: rgba(245, 62, 83, 0.02); }
+
+/*# sourceMappingURL=upload.css.map */

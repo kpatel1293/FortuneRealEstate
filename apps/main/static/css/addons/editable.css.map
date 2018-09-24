@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAKA,mCAAoC;EAChC,OAAO,EAAE,iBAAiB;EAC1B,KAAK,EAAE,qBAAsB;EAC7B,WAAW,EAAE,MAAM;;;AAEvB,yCAA0C;EACtC,OAAO,EAAE,EAAE",
+"sources": ["../../sass/addons/editable.scss"],
+"names": [],
+"file": "editable.css"
+}

@@ -1,1 +1,130 @@
-<h1>HELLO WORLD</h1>
+<!doctype html>
+<html>
+<head>
+    <title>Home</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Kube CSS -->
+    <link rel="stylesheet" href="../static/css/kube.css">
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+
+    <div class="is-navbar-container">
+        <div class="is-brand">
+            <b class="is-logo">Real Estate Website</b>
+        </div>
+        <div class="is-navbar">
+            <nav>
+                <ul>
+                    <li><a class="is-first-left" href="">Buy</a></li> <!-- Catalog page - applies "Buy" filter -->
+                    <li><a href="">Rent</a></li> <!-- Catalog page - aplpies "Rent" filter -->
+                    <li><a href="">Contact</a></li>
+
+                    <!-- Navigation search bar -->
+
+                    <form>
+                        <ul>
+                            <li><input type="search" placeholder="City, State, ZIP Code"></li>
+                        </ul>
+                    </form>
+
+                </ul>
+            </nav>
+            <nav class="is-push-right">
+                <ul>
+                    <li><a href="">Log In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Introduction Search Billboard -->
+
+        <div class="search-billboard billboard">
+            <h1>Discover the Perfect Home</h1>
+            <h2>We'll help you the whole way.</h2>
+            <!-- Search Form -->
+            <form>
+                <div class="home-search form-item">
+                    <div class="is-append">
+                        <input type="text" class="is-search" placeholder="City, State, ZIP Code">
+                        <button class="button">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Seller Banner -->
+
+        <div class="seller-banner">
+            <div id="banner-container">
+                <p><span class="bold">Looking to sell your home?</span> We can help! Contact us to get started.</p>
+                <a id="contact-button" href="" class="button is-inverted" role="button">Contact Us</a>
+            </div>
+        </div>
+
+        <!-- Newest Listings Previews Billboard -->
+
+        <div class="billboard">
+            <h1>Recently Added Homes</h1>
+            <p class="catalog-link"><a id="#link" href="">Search listings by <b>newest first</b>.</a></p>
+
+            <!-- Placeholder for when we put some listings on this page -->
+
+            <div class="listing-placeholder">
+                <p>Listing previews coming soon.</p>
+            </div>
+
+        </div>
+
+        <!-- Sort by: Featured Homes -->
+
+        <div class="billboard">
+            <h1>Featured Homes</h1>
+            <p class="catalog-link"><a id="#link" href="">Search listings by <b>featured</b>.</a></p>
+
+            <!-- Placeholder for when we put some listings on this page -->
+
+            <div class="listing-placeholder">
+                <p>Listing previews coming soon.</p>
+            </div>
+
+        </div>
+
+        <!-- Sort by: Least Expensive Homes -->
+
+        <div class="billboard">
+            <h1>Most Affordable Homes</h1>
+            <p class="catalog-link"><a id="#link" href="">Search listings by <b>least expensive</b>.</a></p>
+
+            <!-- Placeholder for when we put some listings on this page -->
+
+            <div class="listing-placeholder">
+                <p>Listing previews coming soon.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-list">
+            <a href="">Contact Us</a><a href="">Privacy</a><a href="">Terms of Service</a>
+        </div>
+        <p>Copyright &copy; 2018 Real Estate Company. All rights reserved. </p>
+    </footer>
+
+    <!-- Kube framework's JavaScript -->
+    <script src="../static/js/kube.min.js"></script>
+    <script>
+        $K.init();
+    </script>
+</body>
+</html>
