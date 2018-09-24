@@ -23,7 +23,7 @@
                     <ul>
                         <li><a class="is-first-left" href="">Buy</a></li> <!-- Catalog page - applies "Buy" filter -->
                         <li><a href="">Rent</a></li> <!-- Catalog page - aplpies "Rent" filter -->
-                        <li><a href="">Contact</a></li>
+                        <li><a href="/contact">Contact</a></li>
 
                         <!-- Navigation search bar -->
 
@@ -37,7 +37,7 @@
                 </nav>
                 <nav class="is-push-right">
                     <ul>
-                        <li><a href="">Log In</a></li>
+                        <li><a href="/login">Log In</a></li>
                     </ul>
                 </nav>
             </div>
@@ -46,7 +46,8 @@
         <div class="container">
             <div class="login-container is-shadow-2 is-border">
                 <h1>Create an account</h1>
-                <form method="post" action="">
+                <form method="post" action="/create">
+                    {% csrf_token %}
                     <fieldset>
                         <legend>Personal</legend>
                         <div class="is-row">
@@ -75,12 +76,22 @@
                             <input type="password" name="confirmPassword" placeholder="Confirm password">
                         </div>
                     </fieldset>
+                    <input class="button" type="submit" value="Create Account">
                 </form>
-                <input class="button" type="submit" value="Log in">
+                
+                <!-- validations -->
+                {% if messages %}
+                    <div class="messages alert is-error">
+                        {% for message in messages %}
+                            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
                 <hr class="is-border"/>
                 <div id="signup-button" class="form-item">
                     <label>Already have an account?</label>
-                    <button class="button is-secondary is-100">Log in</button>
+                    <a class="button is-secondary is-100" href="/login">Log in</a>
                 </div>
             </div>
         </div>
