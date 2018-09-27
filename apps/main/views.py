@@ -49,7 +49,13 @@ def dashboard(request):
     if 'user_id' not in request.session:
         return redirect('main:home')
 
-    return render(request, 'dashboard.html')
+    check_session = True
+
+    context = {
+        'check_session': check_session
+    }
+
+    return render(request, 'dashboard.html',context)
 
 # catalog - /catalog
 def catalog(request):
