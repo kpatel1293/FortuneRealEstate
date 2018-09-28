@@ -19,53 +19,36 @@ Not to be compiled on its own; imported by custom.scss
 Matthew Brewer - 9/26/2018
 
 */
-/*
-
-Custom Stylesheet Settings
-Custom stylesheet settings file for SCSS variables pertaining to our theme.
-Matthew Brewer - 9/20/2018
-
-*/
+/* line 11, ../sass/custom/navbar.scss */
 .is-navbar-container {
   background-color: #fff;
-  padding: 0 15px;
-}
+  padding: 0 15px; }
 
+/* line 16, ../sass/custom/navbar.scss */
 .is-navbar-container .is-brand {
-  font-size: 18px;
-}
+  font-size: 18px; }
 
+/* line 20, ../sass/custom/navbar.scss */
 .is-navbar li {
-  margin: 0;
-}
+  margin: 0; }
 
+/* line 24, ../sass/custom/navbar.scss */
 .is-navbar nav li a:not(.button) {
   padding: 22px 22px;
   text-decoration: none;
   color: #34495e;
-  border-bottom: 3px solid #fff;
-}
+  border-bottom: 3px solid #fff; }
 
+/* line 31, ../sass/custom/navbar.scss */
 .is-navbar nav li a:not(.button):hover {
   transition: 0.2s linear;
   color: #1976D2;
-  border-color: #1976D2;
-}
+  border-color: #1976D2; }
 
-/*
+/* line 37, ../sass/custom/navbar.scss */
+.is-first-left {
+  margin-left: 15px; }
 
-Stylesheet for Real Estate Website's dashboard sidebar
-Not to be compiled on its own; imported by custom.scss
-Matthew Brewer - 9/26/2018
-
-*/
-/*
-
-Custom Stylesheet Settings
-Custom stylesheet settings file for SCSS variables pertaining to our theme.
-Matthew Brewer - 9/20/2018
-
-*/
 /*
 
 Homepage Specific Stylesheet for Real Estate Website Project
@@ -73,60 +56,60 @@ Not to be compiled on its own; imported by custom.scss
 Matthew Brewer - 9/20/2018
 
 */
+/* line 11, ../sass/custom/home.scss */
 .search-billboard {
   padding: 175px !important;
   text-align: center;
   background: url("../images/homepage-house.jpeg");
   background-size: cover;
-  background-repeat: no-repeat;
-}
+  background-repeat: no-repeat; }
 
+/* line 19, ../sass/custom/home.scss */
 .search-billboard h1 {
   color: #fff !important;
   font-size: 36px !important;
   text-shadow: 0 0 10px #34495e;
-  margin: 0 0 5px 0 !important;
-}
+  margin: 0 0 5px 0 !important; }
 
+/* line 26, ../sass/custom/home.scss */
 .search-billboard h2 {
   color: #fff;
   text-shadow: 0 0 10px #34495e;
   margin: 0 0 25px 0;
-  font-size: 26px;
-}
+  font-size: 26px; }
 
+/* line 35, ../sass/custom/home.scss */
 .home-search {
   width: 75%;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
+/* line 42, ../sass/custom/home.scss */
 .seller-banner {
   width: 100%;
   padding: 15px;
-  background-color: #1976D2;
-}
+  background-color: #1976D2; }
 
+/* line 48, ../sass/custom/home.scss */
 #banner-container {
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
+/* line 54, ../sass/custom/home.scss */
 .seller-banner p {
   color: #fff;
   font-size: 24px;
   display: inline-block;
   margin: 0;
-  line-height: 40px;
-}
+  line-height: 40px; }
 
+/* line 62, ../sass/custom/home.scss */
 .seller-banner p .bold {
-  font-weight: 500;
-}
+  font-weight: 500; }
 
+/* line 66, ../sass/custom/home.scss */
 #contact-button {
-  float: right;
-}
+  float: right; }
 
 /*
 
@@ -136,76 +119,77 @@ Not compiled on its own; included by custom.scss
 Matthew Brewer - 9/20/2018
 
 */
+/* line 12, ../sass/custom/login.scss */
 .grey-background {
-  background-color: #EEEEEE;
-}
+  background-color: #EEEEEE; }
 
+/* line 18, ../sass/custom/login.scss */
 .login-container {
   margin: 25px auto 0 auto;
   padding: 25px;
   max-width: 500px;
   width: 100%;
   background-color: #fff;
-  border-radius: 5px;
-}
+  border-radius: 5px; }
 
+/* line 27, ../sass/custom/login.scss */
 .login-container h1 {
   width: 100%;
   text-align: center;
   font-size: 22px;
   font-weight: 500;
-  margin: 0 0 15px 0;
-}
+  margin: 0 0 15px 0; }
 
+/* line 37, ../sass/custom/login.scss */
 .login-container hr {
   width: 100%;
   margin: 30px 0;
   background-color: 1px solid rgba(17, 17, 19, 0.1);
-  height: 1px;
-}
+  height: 1px; }
 
+/* line 46, ../sass/custom/login.scss */
 #signup-button {
-  margin-bottom: 0 !important;
-}
+  margin-bottom: 0 !important; }
 
+/* line 50, ../sass/custom/login.scss */
 #signup-button label {
-  margin-bottom: 15px;
-}
+  margin-bottom: 15px; }
 
+/* line 16, ../sass/custom.scss */
 .container {
   padding: 0 0 15px 0;
   width: 100%;
   margin: 0;
-  min-height: 100%;
-}
+  min-height: 100%; }
 
+/* line 25, ../sass/custom.scss */
 .billboard {
   width: 100%;
-  padding: 10px 10px;
-}
+  padding: 10px 10px; }
 
+/* line 30, ../sass/custom.scss */
 .billboard h1 {
   color: #000;
   font-size: 34px;
   margin: 20px 0;
-  text-align: center;
-}
+  text-align: center; }
 
+/* line 37, ../sass/custom.scss */
 .catalog-link {
   width: 100%;
   margin-bottom: 40px;
-  text-align: center;
-}
+  text-align: center; }
 
+/* line 43, ../sass/custom.scss */
 .catalog-link a {
   text-decoration: none;
-  font-size: 18px;
-}
+  font-size: 18px; }
 
+/* line 48, ../sass/custom.scss */
 .catalog-link b {
-  font-weight: 500 !important;
-}
+  font-weight: 500 !important; }
 
+/* line 54, ../sass/custom.scss */
 .listing-placeholder {
   width: 90%;
   margin: 15px auto;
@@ -213,38 +197,39 @@ Matthew Brewer - 9/20/2018
   background-color: #EEEEEE;
   border-radius: 5px;
   border: 1px solid #BDBDBD;
-  text-align: center;
-}
+  text-align: center; }
 
+/* line 64, ../sass/custom.scss */
 .listing-placeholder p {
   font-size: 18px;
   color: #000;
   text-align: center;
-  margin: 0;
-}
+  margin: 0; }
 
+/* line 73, ../sass/custom.scss */
 footer {
   width: 100%;
   padding: 25px;
   background-color: #EEEEEE;
-  border-top: 1px solid #BDBDBD;
-}
+  border-top: 1px solid #BDBDBD; }
 
+/* line 80, ../sass/custom.scss */
 footer p {
   width: 100%;
   margin: 10px 0 0 9px;
   padding: 5px 0;
   font-size: 14px;
-  color: #000;
-}
+  color: #000; }
 
+/* line 88, ../sass/custom.scss */
 .footer-list a {
   margin: 5px 10px;
   font-size: 16px;
   color: #000 !important;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
+/* line 95, ../sass/custom.scss */
 .footer-list a:hover {
-  color: #000 !important;
-}
+  color: #000 !important; }
+
+/*# sourceMappingURL=custom.css.map */

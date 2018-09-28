@@ -1,19 +1,39 @@
 /*
-Error: Undefined variable: "$color-text".
-        on line 11 of C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\themes\kube.theme.vars.scss
+Error: Undefined variable: "$theme-dark".
+        on line 22 of C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\custom\home.scss
 
-6: 
-7: // label
-8: $form-label-font-size: 0.71875rem; // 11.5px
-9: $form-label-font-weight: 600;
-10: $form-label-text-transform: uppercase;
-11: $form-label-color-text: $color-text;
+17: }
+18: 
+19: .search-billboard h1 {
+20:     color: #fff !important;
+21:     font-size: 36px !important;
+22:     text-shadow: 0 0 10px $theme-dark;
+23:     margin: 0 0 5px 0 !important;
+24: }
+25: 
+26: .search-billboard h2 {
+27:     color: #fff;
 
 Backtrace:
-C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\themes\kube.theme.vars.scss:11
+C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\custom\home.scss:22
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/variable.rb:49:in `_perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:482:in `visit_variable'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/list_literal.rb:75:in `block in _perform'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/list_literal.rb:75:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/list_literal.rb:75:in `_perform'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block (2 levels) in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:442:in `visit_rule'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
@@ -46,4 +66,4 @@ C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$color-text\".\A         on line 11 of C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\themes\kube.theme.vars.scss\A \A 6: \A 7: // label\A 8: $form-label-font-size: 0.71875rem; // 11.5px\A 9: $form-label-font-weight: 600;\A 10: $form-label-text-transform: uppercase;\A 11: $form-label-color-text: $color-text;"; }
+  content: "Error: Undefined variable: \"$theme-dark\".\A         on line 22 of C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\custom\home.scss\A \A 17: }\A 18: \A 19: .search-billboard h1 {\A 20:     color: #fff !important;\A 21:     font-size: 36px !important;\A 22:     text-shadow: 0 0 10px $theme-dark;\A 23:     margin: 0 0 5px 0 !important;\A 24: }\A 25: \A 26: .search-billboard h2 {\A 27:     color: #fff;"; }

@@ -4641,6 +4641,74 @@ Matthew Brewer - 9/20/2018
 */
 /*
 
+Stylesheet for Real Estate Website's navigation bars
+Not to be compiled on its own; imported by custom.scss
+Matthew Brewer - 9/26/2018
+
+*/
+/*
+
+Custom Stylesheet Settings
+Custom stylesheet settings file for SCSS variables pertaining to our theme.
+Matthew Brewer - 9/20/2018
+
+*/
+/* line 13, ../sass/custom/navbar.scss */
+.is-navbar-container {
+  background-color: #fff;
+  padding: 0 15px; }
+
+/* line 18, ../sass/custom/navbar.scss */
+.is-navbar {
+  padding: 0 15px; }
+
+/* line 22, ../sass/custom/navbar.scss */
+.is-navbar-container .is-brand {
+  font-size: 18px; }
+
+/* line 26, ../sass/custom/navbar.scss */
+.is-navbar li {
+  margin: 0; }
+
+/* line 30, ../sass/custom/navbar.scss */
+.is-navbar nav li a:not(.button) {
+  padding: 22px 22px;
+  text-decoration: none;
+  color: #34495e;
+  border-bottom: 3px solid #fff; }
+
+/* line 37, ../sass/custom/navbar.scss */
+.is-navbar nav li a:not(.button):hover {
+  transition: 0.2s linear;
+  color: #1976D2;
+  border-color: #1976D2; }
+
+/* line 43, ../sass/custom/navbar.scss */
+.is-logo {
+  text-decoration: none;
+  font-weight: 500;
+  color: #000; }
+
+/* line 49, ../sass/custom/navbar.scss */
+.is-logo:hover {
+  color: #000; }
+
+/*
+
+Stylesheet for Real Estate Website's dashboard sidebar
+Not to be compiled on its own; imported by custom.scss
+Matthew Brewer - 9/26/2018
+
+*/
+/*
+
+Custom Stylesheet Settings
+Custom stylesheet settings file for SCSS variables pertaining to our theme.
+Matthew Brewer - 9/20/2018
+
+*/
+/*
+
 Homepage Specific Stylesheet for Real Estate Website Project
 Not to be compiled on its own; imported by custom.scss
 Matthew Brewer - 9/20/2018
@@ -4703,17 +4771,24 @@ Matthew Brewer - 9/20/2018
 
 /*
 
-Login Stylesheet
-Page-specific to login and registration pages.
+Form Stylesheet
+Used for any page that consists of a large form as its primary purpose.
 Not compiled on its own; included by custom.scss
 Matthew Brewer - 9/20/2018
 
 */
-/* line 12, ../sass/custom/login.scss */
+/*
+
+Custom Stylesheet Settings
+Custom stylesheet settings file for SCSS variables pertaining to our theme.
+Matthew Brewer - 9/20/2018
+
+*/
+/* line 14, ../sass/custom/form.scss */
 .grey-background {
   background-color: #EEEEEE; }
 
-/* line 18, ../sass/custom/login.scss */
+/* line 20, ../sass/custom/form.scss */
 .login-container {
   margin: 25px auto 0 auto;
   padding: 25px;
@@ -4722,7 +4797,7 @@ Matthew Brewer - 9/20/2018
   background-color: #fff;
   border-radius: 5px; }
 
-/* line 27, ../sass/custom/login.scss */
+/* line 29, ../sass/custom/form.scss */
 .login-container h1 {
   width: 100%;
   text-align: center;
@@ -4730,87 +4805,96 @@ Matthew Brewer - 9/20/2018
   font-weight: 500;
   margin: 0 0 15px 0; }
 
-/* line 37, ../sass/custom/login.scss */
+/* line 39, ../sass/custom/form.scss */
 .login-container hr {
   width: 100%;
   margin: 30px 0;
   background-color: 1px solid rgba(17, 17, 19, 0.1);
   height: 1px; }
 
-/* line 46, ../sass/custom/login.scss */
+/* line 48, ../sass/custom/form.scss */
 #signup-button {
   margin-bottom: 0 !important; }
 
-/* line 50, ../sass/custom/login.scss */
+/* line 52, ../sass/custom/form.scss */
 #signup-button label {
   margin-bottom: 15px; }
 
-/* line 15, ../sass/custom.scss */
-.is-navbar-container {
+/* line 58, ../sass/custom/form.scss */
+.listing-form-container {
+  margin: 25px auto 0 auto;
+  padding: 25px;
+  max-width: 1200px;
+  width: 100%;
   background-color: #fff;
-  padding: 0 15px;
-  border-bottom: 1px solid #E0E0E0; }
+  border-radius: 5px; }
 
-/* line 21, ../sass/custom.scss */
-.is-navbar-container .is-brand {
-  font-size: 18px; }
+/* line 67, ../sass/custom/form.scss */
+.listing-form-container .is-col {
+  padding: 5px; }
 
-/* line 25, ../sass/custom.scss */
-.is-navbar li {
-  margin: 0; }
+/* line 71, ../sass/custom/form.scss */
+.listing-form-container h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 25px 0; }
 
-/* line 29, ../sass/custom.scss */
-.is-navbar nav li a:not(.button) {
-  padding: 22px 22px;
-  text-decoration: none;
-  color: #34495e;
-  border-bottom: 3px solid #fff; }
+/* line 79, ../sass/custom/form.scss */
+.listing-form-container h2 {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 20px 0; }
 
-/* line 36, ../sass/custom.scss */
-.is-navbar nav li a:not(.button):hover {
-  transition: 0.2s linear;
-  color: #1976D2;
-  border-color: #1976D2; }
+/* line 86, ../sass/custom/form.scss */
+.listing-form-container p {
+  color: #424242;
+  font-size: 16px; }
 
-/* line 42, ../sass/custom.scss */
-.is-first-left {
-  margin-left: 15px; }
+/* line 93, ../sass/custom/form.scss */
+.listing-form-container hr {
+  width: 100%;
+  margin: 30px 0;
+  background-color: 1px solid rgba(17, 17, 19, 0.1);
+  height: 1px; }
 
-/* line 48, ../sass/custom.scss */
+/* line 17, ../sass/custom.scss */
 .container {
   padding: 0 0 15px 0;
   width: 100%;
   margin: 0;
   min-height: 100%; }
 
-/* line 57, ../sass/custom.scss */
+/* line 26, ../sass/custom.scss */
 .billboard {
   width: 100%;
   padding: 10px 10px; }
 
-/* line 62, ../sass/custom.scss */
+/* line 31, ../sass/custom.scss */
 .billboard h1 {
   color: #000;
   font-size: 34px;
   margin: 20px 0;
   text-align: center; }
 
-/* line 69, ../sass/custom.scss */
+/* line 38, ../sass/custom.scss */
 .catalog-link {
   width: 100%;
   margin-bottom: 40px;
   text-align: center; }
 
-/* line 75, ../sass/custom.scss */
+/* line 44, ../sass/custom.scss */
 .catalog-link a {
   text-decoration: none;
   font-size: 18px; }
 
-/* line 80, ../sass/custom.scss */
+/* line 49, ../sass/custom.scss */
 .catalog-link b {
   font-weight: 500 !important; }
 
-/* line 86, ../sass/custom.scss */
+/* line 55, ../sass/custom.scss */
 .listing-placeholder {
   width: 90%;
   margin: 15px auto;
@@ -4820,21 +4904,21 @@ Matthew Brewer - 9/20/2018
   border: 1px solid #BDBDBD;
   text-align: center; }
 
-/* line 96, ../sass/custom.scss */
+/* line 65, ../sass/custom.scss */
 .listing-placeholder p {
   font-size: 18px;
   color: #000;
   text-align: center;
   margin: 0; }
 
-/* line 105, ../sass/custom.scss */
+/* line 74, ../sass/custom.scss */
 footer {
   width: 100%;
   padding: 25px;
   background-color: #EEEEEE;
   border-top: 1px solid #BDBDBD; }
 
-/* line 112, ../sass/custom.scss */
+/* line 81, ../sass/custom.scss */
 footer p {
   width: 100%;
   margin: 10px 0 0 9px;
@@ -4842,14 +4926,14 @@ footer p {
   font-size: 14px;
   color: #000; }
 
-/* line 120, ../sass/custom.scss */
+/* line 89, ../sass/custom.scss */
 .footer-list a {
   margin: 5px 10px;
   font-size: 16px;
   color: #000 !important;
   text-decoration: none; }
 
-/* line 127, ../sass/custom.scss */
+/* line 96, ../sass/custom.scss */
 .footer-list a:hover {
   color: #000 !important; }
 

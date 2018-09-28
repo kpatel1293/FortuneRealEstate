@@ -1,19 +1,35 @@
 /*
-Error: Undefined variable: "$color-text".
-        on line 11 of C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\themes\kube.theme.vars.scss
+Error: Undefined variable: "$grey".
+        on line 11 of C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\custom\login.scss
 
-6: 
-7: // label
-8: $form-label-font-size: 0.71875rem; // 11.5px
-9: $form-label-font-weight: 600;
-10: $form-label-text-transform: uppercase;
-11: $form-label-color-text: $color-text;
+6: Matthew Brewer - 9/20/2018
+7: 
+8: *\/
+9: 
+10: .grey-background {
+11:    background-color: $grey;
+12: }
+13: 
+14: // Login Form Base
+15: 
+16: .login-container {
 
 Backtrace:
-C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\themes\kube.theme.vars.scss:11
+C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\custom\login.scss:11
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/variable.rb:49:in `_perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:482:in `visit_variable'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block (2 levels) in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:442:in `visit_rule'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
@@ -46,4 +62,4 @@ C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$color-text\".\A         on line 11 of C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\themes\kube.theme.vars.scss\A \A 6: \A 7: // label\A 8: $form-label-font-size: 0.71875rem; // 11.5px\A 9: $form-label-font-weight: 600;\A 10: $form-label-text-transform: uppercase;\A 11: $form-label-color-text: $color-text;"; }
+  content: "Error: Undefined variable: \"$grey\".\A         on line 11 of C:\Users\matth\Documents\GitHub\RealEstate_Client\static\sass\custom\login.scss\A \A 6: Matthew Brewer - 9/20/2018\A 7: \A 8: */\A 9: \A 10: .grey-background {\A 11:    background-color: $grey;\A 12: }\A 13: \A 14: // Login Form Base\A 15: \A 16: .login-container {"; }
