@@ -1,0 +1,55 @@
+/*
+
+Stylesheet for Real Estate Website's navigation bars
+Not to be compiled on its own; imported by custom.scss
+Matthew Brewer - 9/26/2018
+
+*/
+/*
+
+Custom Stylesheet Settings
+Custom stylesheet settings file for SCSS variables pertaining to our theme.
+Matthew Brewer - 9/20/2018
+
+*/
+/* line 13, ../../sass/custom/navbar.scss */
+.is-navbar-container {
+  background-color: #fff;
+  padding: 0 15px; }
+
+/* line 18, ../../sass/custom/navbar.scss */
+.is-navbar {
+  padding: 0 15px; }
+
+/* line 22, ../../sass/custom/navbar.scss */
+.is-navbar-container .is-brand {
+  font-size: 18px; }
+
+/* line 26, ../../sass/custom/navbar.scss */
+.is-navbar li {
+  margin: 0; }
+
+/* line 30, ../../sass/custom/navbar.scss */
+.is-navbar nav li a:not(.button) {
+  padding: 22px 22px;
+  text-decoration: none;
+  color: #34495e;
+  border-bottom: 3px solid #fff; }
+
+/* line 37, ../../sass/custom/navbar.scss */
+.is-navbar nav li a:not(.button):hover {
+  transition: 0.2s linear;
+  color: #1976D2;
+  border-color: #1976D2; }
+
+/* line 43, ../../sass/custom/navbar.scss */
+.is-logo {
+  text-decoration: none;
+  font-weight: 500;
+  color: #000; }
+
+/* line 49, ../../sass/custom/navbar.scss */
+.is-logo:hover {
+  color: #000; }
+
+/*# sourceMappingURL=navbar.css.map */

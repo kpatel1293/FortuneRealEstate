@@ -1,0 +1,54 @@
+/*
+
+Stylesheet for Real Estate Website's navigation bars
+Not to be compiled on its own; imported by custom.scss
+Matthew Brewer - 9/26/2018
+
+*/
+
+@import "settings";
+
+// Primary Navigation
+
+.is-navbar-container {
+    background-color: #fff;
+    padding: 0 15px;
+}
+
+.is-navbar {
+    padding: 0 15px;
+}
+
+.is-navbar-container .is-brand {
+    font-size: 18px;
+}
+
+.is-navbar li {
+    margin: 0;
+}
+
+.is-navbar nav li a:not(.button) {
+    padding: 22px 22px;
+    text-decoration: none;
+    color: #34495e;
+    border-bottom: 3px solid #fff;
+}
+
+.is-navbar nav li a:not(.button):hover {
+    transition: 0.2s linear;
+    color: $theme-color;
+    border-color: $theme-color;
+}
+
+.is-logo {
+    text-decoration: none;
+    font-weight: 500;
+    color: #000;
+}
+
+.is-logo:hover {
+    color: #000;
+}
+
+// Secondary Sidebar
+

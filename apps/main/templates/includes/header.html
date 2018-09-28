@@ -1,21 +1,16 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Account Dashboard - Forutne Real Estate</title>
+<!--
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    Navigation Bar HTML Template
+    Includes both the primary and secondary navigation bars.
+    The secondary-navigation and dropdowns related to it can be omitted for pages where it is unnecessary.
+    Matthew Brewer; September 27, 2018
 
-        <!-- Kube CSS -->
-        <link rel="stylesheet" href="../static/css/kube.css">
+-->
 
-    </head>
-    <body class="grey-background">
-
-        <!-- Navigation Bar -->
+<!-- Navigation Bar -->
 
         <!-- Mobile toggle icon -->
-
+            <!-- This will be styled to be more visually appealing when we focus on mobile compatibility. -->
         <a href="#"
                 class="nav-toggle is-push-right-mobile is-shown-mobile icon-kube-menu"
                 data-kube="toggle"
@@ -63,7 +58,7 @@
 
             <!-- Secondary Navigation -->
 
-            <div class="is-navbar-container">
+            <div id="secondary-navigation" class="is-navbar-container">
                 <div class="is-navbar">
                     <nav class="is-center">
                         <ul>
@@ -105,17 +100,3 @@
             <a href="">Activity</a>
             <a href="">Configure</a>
         </div>
-
-        <!-- Page Body -->
-
-        <div class="container is-container">
-
-        </div>
-
-        <!-- Kube framework's JavaScript -->
-        <script src="../static/js/kube.min.js"></script>
-        <script>
-            $K.init();
-        </script>
-    </body>
-</html>
