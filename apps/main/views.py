@@ -45,6 +45,8 @@ def forgot_pwd(request):
 
 # dashboard (user) - /dashboard
 def dashboard(request):
+    check_session = False
+
     # check if user in session
     if 'user_id' not in request.session:
         return redirect('main:home')
