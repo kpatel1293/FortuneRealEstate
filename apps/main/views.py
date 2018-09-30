@@ -36,12 +36,12 @@ def register(request):
     return render(request,'register.html')
 
 # forgot password - /forgotpassword
-def forgot_pwd(request):
-    # check if user in session
-    if 'user_id' in request.session:
-        return redirect('main:dashboard')
+# def forgot_pwd(request):
+#     # check if user in session
+#     if 'user_id' in request.session:
+#         return redirect('main:dashboard')
 
-    return render(request,'forgotpwd.html')
+#     return render(request,'forgotpwd.html')
 
 # dashboard - /dashboard
 def dashboard(request):
@@ -88,67 +88,67 @@ def dashboard(request):
 
 
 # catalog - /catalog
-def catalog(request):
-    check_session = False
-    # check if user in session
-    if 'user_id' in request.session:
-        check_session = True
+# def catalog(request):
+#     check_session = False
+#     # check if user in session
+#     if 'user_id' in request.session:
+#         check_session = True
 
-    context = {
-        'check_session': check_session
-    }
+#     context = {
+#         'check_session': check_session
+#     }
 
-    return render(request,'catalog.html',context)
+#     return render(request,'catalog.html',context)
 
 # contact us - /contact
-def contact_us(request):
-    check_session = False
-    # check if user in session
-    if 'user_id' in request.session:
-        check_session = True
+# def contact_us(request):
+#     check_session = False
+#     # check if user in session
+#     if 'user_id' in request.session:
+#         check_session = True
         
-    show_dash_head = False
+#     show_dash_head = False
 
-    if check_session:
-        # get user name
-        user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
-        user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
-    else:
-        user = ''
+#     if check_session:
+#         # get user name
+#         user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+#         user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+#     else:
+#         user = ''
     
-    context = {
-        'check_session': check_session,
-        'show_head': show_dash_head,
-        'user': user
-    }
+#     context = {
+#         'check_session': check_session,
+#         'show_head': show_dash_head,
+#         'user': user
+#     }
 
-    return render(request,'contactus.html',context)
+#     return render(request,'contactus.html',context)
 
 # privacy - /privacy
-def privacy(request):
-    check_session = False
-    # check if user in session
-    if 'user_id' in request.session:
-        check_session = True
+# def privacy(request):
+#     check_session = False
+#     # check if user in session
+#     if 'user_id' in request.session:
+#         check_session = True
 
-    context = {
-        'check_session': check_session
-    }
+#     context = {
+#         'check_session': check_session
+#     }
 
-    return render(request,'privacy.html',context)
+    # return render(request,'privacy.html',context)
 
 # terms of service - /termsofservice
-def terms_of_service(request):
-    check_session = False
-    # check if user in session
-    if 'user_id' in request.session:
-        check_session = True
+# def terms_of_service(request):
+#     check_session = False
+#     # check if user in session
+#     if 'user_id' in request.session:
+#         check_session = True
 
-    context = {
-        'check_session': check_session
-    }
+#     context = {
+#         'check_session': check_session
+#     }
 
-    return render(request,'terms_of_service.html',context)
+#     return render(request,'terms_of_service.html',context)
 
 # Redirect/Logic
 
