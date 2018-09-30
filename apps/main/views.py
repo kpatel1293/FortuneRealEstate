@@ -19,6 +19,7 @@ def home(request):
         # get user name
         user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
         user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+        print user
     else:
         user = ''
 
