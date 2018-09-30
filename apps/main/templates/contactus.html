@@ -1,7 +1,30 @@
-<h1>CONTACT US</h1>
+<!doctype html>
+<html>
+    <head>
+        <title>Contact Us - Forutne Real Estate</title>
 
-{% if check_session %}
-    <a href="/logout">logout</a>
-{% else %}
-    <a href="/login">login</a>
-{% endif %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Kube CSS -->
+        <link rel="stylesheet" href="../static/css/kube.css">
+
+    </head>
+    <body class="grey-background">
+
+        <!-- Navigation Bar -->
+        {% include "includes/header.html" %}
+
+        <!-- Page Body -->
+
+        <div class="container is-container">
+
+        </div>
+
+        <!-- Kube framework's JavaScript -->
+        <script src="../static/js/kube.min.js"></script>
+        <script>
+            $K.init();
+        </script>
+    </body>
+</html>
