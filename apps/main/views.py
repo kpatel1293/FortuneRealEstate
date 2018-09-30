@@ -12,9 +12,20 @@ def home(request):
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
+    
+    show_dash_head = False
+
+    if check_session:
+        # get user name
+        user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+        user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+    else:
+        user = ''
 
     context = {
-        'check_session': check_session
+        'check_session': check_session,
+        'show_head': show_dash_head,
+        'user': user
     }
 
     return render(request,'index.html',context)
