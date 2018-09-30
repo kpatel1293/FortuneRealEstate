@@ -8,6 +8,22 @@ urlpatterns = [
     url(r'^register$', views.register, name='register'),                            # register page     - /register
     url(r'^forgotpassword$', views.forgot_pwd, name='forgot_pwd'),                  # forgot password   - /forgotpassword
     url(r'^dashboard$', views.dashboard, name='dashboard'),                         # dashboard  - /dashboard
+    # USER 
+
+    # settings - /settings
+
+    # AGENT
+
+    # listings - /agent/listing
+    # create listing - /agent/create
+
+    # ADMIN
+
+    # users (view all users) - /admin/show
+    # create user - /admin/user
+    # activity - /admin/activity
+    # configure - /admin/config
+    
     url(r'^catalog$', views.catalog, name='catalog'),                               # catalog           - /catalog
     url(r'^contact$', views.contact_us, name='contact_us'),                         # contact us        - /contact
     url(r'^privacy$', views.privacy, name='privacy'),                               # privacy           - /privacy
