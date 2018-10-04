@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
     <head>
@@ -20,7 +21,8 @@
         <div class="container is-container">
         <div class="listing-form-container is-shadow-2 is-border">
             <h1>Create a listing</h1>
-            <form method="post" action="">
+            <form method="post" action="/agent/create/new">
+                {% csrf_token %}
                 <div class="is-row">
                     <div class="is-col" id="left-panel">
                         <h2>Configuration</h2>
@@ -111,7 +113,7 @@
                         <p>Clicking "Create Listing" will save and publish this listing. You can edit or remove the listing at any time.</p>
                         <hr class="is-border"/>
                         <div class="form-item">
-                            <button class="button is-secondary is-100">Cancel</button>
+                            <a class="button is-secondary is-100" href="/dashboard">Cancel</a>
                         </div>
                         <p>Clicking "Cancel" will erase all of the data on this form and send you back to the Listings page.</p>
                     </div>

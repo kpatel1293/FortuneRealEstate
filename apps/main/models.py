@@ -105,24 +105,56 @@ class User(models.Model):
 
 # LISTING
 # listing manager
+class ListingManager(models.Manager):
+    pass
 
 # listing table
 class Listing(models.Model):
-    city = models.CharField(max_length=255)
-    state = models.CharField(max_length=255)
+    LISTING_TYPE_CHOICES = (
+        ('S', 'Single-Family Home'),
+        ('A', 'Apartment'),
+        ('C', 'Condo'),
+        ('T', 'Townhouse'),
+        ('L', 'Land'),
+        ('M', 'Mult-Family Home'),
+        ('F', 'Farm/Ranch')
+    )
+
+    # Address
     addressOne = models.CharField(max_length=255)
-    addressTwo = models.CharField(max_length=255)   
+    addressTwo = models.CharField(max_length=255)  
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255) 
     zipcode = models.IntegerField()
+    
+    # Details
     price = models.IntegerField()
+    listing_type = models.CharField(max_length=1, choices=LISTING_TYPE_CHOICES)
+    bedrooms = models.IntegerField()
+    bathrooms = models.FloatField()
+    sq_footage = models.IntegerField()
+    lot_size = models.IntegerField()
+    desc = models.TextField()
     agentId = models.ForeignKey(User, related_name="agent_id")
-    # May not be able to add the image id here
+    
+    # Image
+    image = models.ImageField(upload_to='houses')
+
+    # timestaps
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    objects = ListingManager()
+
+    def __str__(self):
+        return self.addressOne
 
 # IMAGE
 # image manager
 
 # image table
-class Images(models.Model):
-    fileName = models.CharField(max_length=255)
-    path = models.CharField(max_length=255)
-    active = models.IntegerField()
-    listingId = models.ForeignKey(Listing, related_name="listing_id")
+# class Images(models.Model):
+#     fileName = models.CharField(max_length=255)
+#     path = models.CharField(max_length=255)
+#     active = models.IntegerField()
+#     listingId = models.ForeignKey(Listing, related_name="listing_id")

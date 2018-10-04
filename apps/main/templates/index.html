@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Kube CSS -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static "../static/css/kube.css" %}">
+    <link rel="stylesheet" href="../static/css/kube.css">
 
 </head>
 <body>
@@ -39,7 +38,7 @@
         <div class="seller-banner">
             <div id="banner-container">
                 <p><span class="bold">Looking to sell your home?</span> We can help! Contact us to get started.</p>
-                <a id="contact-button" href="" class="button is-inverted" role="button">Contact Us</a>
+                <a id="contact-button" href="/contact" class="button is-inverted" role="button">Contact Us</a>
             </div>
         </div>
 
@@ -47,7 +46,7 @@
 
         <div class="billboard">
             <h1>Recently Added Homes</h1>
-            <p class="catalog-link"><a id="#link" href="">Search listings by <b>newest first</b>.</a></p>
+            <p class="catalog-link"><a id="#link" href="/catalog">Search listings by <b>newest first</b>.</a></p>
 
             <!-- Placeholder for when we put some listings on this page -->
 
@@ -61,7 +60,7 @@
 
         <div class="billboard">
             <h1>Featured Homes</h1>
-            <p class="catalog-link"><a id="#link" href="">Search listings by <b>featured</b>.</a></p>
+            <p class="catalog-link"><a id="#link" href="/catalog">Search listings by <b>featured</b>.</a></p>
 
             <!-- Placeholder for when we put some listings on this page -->
 
@@ -75,7 +74,7 @@
 
         <div class="billboard">
             <h1>Most Affordable Homes</h1>
-            <p class="catalog-link"><a id="#link" href="">Search listings by <b>least expensive</b>.</a></p>
+            <p class="catalog-link"><a id="#link" href="/catalog">Search listings by <b>least expensive</b>.</a></p>
 
             <!-- Placeholder for when we put some listings on this page -->
 
@@ -89,7 +88,7 @@
 
     <footer>
         <div class="footer-list">
-            <a href="">Contact Us</a><a href="">Privacy</a><a href="">Terms of Service</a>
+            <a href="/contact">Contact Us</a><a href="/privacy">Privacy</a><a href="/termsofservice">Terms of Service</a>
         </div>
         <p>Copyright &copy; 2018 Real Estate Company. All rights reserved. </p>
     </footer>
