@@ -106,7 +106,70 @@ class User(models.Model):
 # LISTING
 # listing manager
 class ListingManager(models.Manager):
-    pass
+    def create_listing(self, form_data, user_id):
+        # empty errors list
+        errors = []
+
+        # Address
+        # ...address
+        if len(form_data['addressLine1']) == 0:
+            errors.append('Address can not be left empty!')
+        # ...city
+        if len(form_data['city']) == 0:
+            errors.append('City can not be left empty!')
+        # state
+        if len(form_data['state']) == 0:
+            errors.append('State can not be left empty!')
+        if len(form_data['state']) > 2:
+            errors.append('Enter the abbreviation of the state only!')
+        # ...check state is valid or not
+        list_of_state = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
+        
+        found = False
+        for list in list_of_state:
+            if form_data['state'] == list:
+                found = True
+                break
+        
+        if found:
+            print form_data['state']
+        else:
+            errors.append('Invalid state!')
+
+        # zip code
+        if len(form_data['zip']) == 0:
+            errors.append('Zipcode can not be left empty!')
+        if len(form_data['zip']) > 6:
+            errors.append('Invalid zipcode!')
+        
+        # Details
+        # ...price
+        if len(form_data['price']) == 0:
+            errors.append('Price can not be left empty!')
+        # # ...bedrooms
+        # if type(form_data['bedrooms']) != int:
+        #     errors.append('Bedroooms must be numbers only!')
+        # # ...bathrooms
+        # if type(form_data['bathrooms']) != float or type(form_data['bathrooms']) != int:
+        #     errors.append('Bathrooms must be numbers only!')
+        # # ...sq foot
+        # if type(form_data['sqFootage']) != int:
+        #     errors.append('Square footage must be numbers only!')
+        # # ...lot size
+        # if type(form_data['lotSize']) != int:
+        #     errors.append('Lot size must be numbers only!')
+        
+        # check if any errors
+        if errors: # if true, display errors
+            return (False, errors)
+
+        # store listing to database
+        create_listing = self.create(addressOne=form_data['addressLine1'],addressTwo=form_data['addressLine2'],city=form_data['city'],state=form_data['state'],zipcode=form_data['zip'],price=form_data['price'],listing_type=form_data['listing-type'],bedrooms=form_data['bedrooms'],bathrooms=form_data['bathrooms'],sq_footage=form_data['sqFootage'],lot_size=form_data['lotSize'],desc=form_data['desc'],agentId=User.objects.get(id=user_id),image=form_data['thumbnail'])
+        
+        print 'ADDED LISTING SUCCESSFULLY! This is the address: {}'.format(create_listing)
+
+        return (True, create_listing.id)
+
 
 # listing table
 class Listing(models.Model):
@@ -128,7 +191,7 @@ class Listing(models.Model):
     zipcode = models.IntegerField()
     
     # Details
-    price = models.IntegerField()
+    price = models.CharField(max_length=255)
     listing_type = models.CharField(max_length=1, choices=LISTING_TYPE_CHOICES)
     bedrooms = models.IntegerField()
     bathrooms = models.FloatField()
@@ -138,7 +201,7 @@ class Listing(models.Model):
     agentId = models.ForeignKey(User, related_name="agent_id")
     
     # Image
-    image = models.ImageField(upload_to='houses')
+    image = models.ImageField(upload_to='./static/images/')
 
     # timestaps
     created_at = models.DateTimeField(auto_now_add = True)

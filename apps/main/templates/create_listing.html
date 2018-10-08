@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="form-item is-col">
                                     <label>Listing Type <span class="is-req">*</span></label>
-                                    <select>
+                                    <select name="listing-type">
                                         <option value="Single-Family Home">Single-Family Home</option>
                                         <option value="Apartment">Apartment</option>
                                         <option value="Condo">Condo</option>
@@ -93,7 +93,7 @@
                             </div>
                             <div class="form-item">
                                 <label>Description</label>
-                                <textarea rows="5" placeholder="Any other notable details about the listing..."></textarea>
+                                <textarea name="desc" rows="5" placeholder="Any other notable details about the listing..."></textarea>
                             </div>
                         </fieldset>
                     </div>
@@ -116,10 +116,17 @@
                             <a class="button is-secondary is-100" href="/dashboard">Cancel</a>
                         </div>
                         <p>Clicking "Cancel" will erase all of the data on this form and send you back to the Listings page.</p>
+                        <!-- validations -->
+                        {% if messages %}
+                            <div class="messages alert is-error">
+                                {% for message in messages %}
+                                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </form>
-        </div>
 
         <!-- Kube framework's JavaScript -->
         <script src="../static/js/kube.min.js"></script>

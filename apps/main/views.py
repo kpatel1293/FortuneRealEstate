@@ -243,5 +243,19 @@ def logout(request):
 
 # new listing - /agent/create/new
 def new_listing(request):
+    # store user in session
+    user = request.session['user_id']
+
+    # validate listing
+    valid, result = Listing.objects.create_listing(request.POST, user)
+
+    print valid
+
+    # check for errors
+    if not valid:
+        for e in result:
+            messages.error(request, e)
+        # if there are errors return back to listing page
+        return redirect('main:create_listing')
 
     return redirect('main:dashboard')
