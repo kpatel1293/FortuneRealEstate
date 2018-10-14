@@ -4853,48 +4853,181 @@ Matthew Brewer - 9/20/2018
   color: #424242;
   font-size: 16px; }
 
-/* line 93, ../sass/custom/form.scss */
+/* line 95, ../sass/custom/form.scss */
+.contact-form-container {
+  margin: 25px auto 0 auto;
+  padding: 25px;
+  max-width: 1200px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px; }
+
+/* line 104, ../sass/custom/form.scss */
+.contact-form-container .is-col {
+  padding: 5px; }
+
+/* line 108, ../sass/custom/form.scss */
+.contact-form-container h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 25px 0; }
+
+/* line 116, ../sass/custom/form.scss */
+.contact-form-container h2 {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 20px 0; }
+
+/* line 123, ../sass/custom/form.scss */
+.contact-form-container p {
+  color: #424242;
+  font-size: 16px; }
+
+/* line 130, ../sass/custom/form.scss */
 .listing-form-container hr {
   width: 100%;
   margin: 30px 0;
   background-color: 1px solid rgba(17, 17, 19, 0.1);
   height: 1px; }
 
-/* line 17, ../sass/custom.scss */
+/*
+
+Stylesheet specific to the Contact page
+Not to be compiled on its own; imported by custom.scss
+Matthew Brewer - 9/26/2018
+
+*/
+/*
+
+Custom Stylesheet Settings
+Custom stylesheet settings file for SCSS variables pertaining to our theme.
+Matthew Brewer - 9/20/2018
+
+*/
+/* line 13, ../sass/custom/contact.scss */
+.contact-search-billboard {
+  padding: 100px !important;
+  text-align: center; }
+
+/* line 18, ../sass/custom/contact.scss */
+.contact-search-billboard h1 {
+  font-size: 36px !important;
+  font-weight: 400;
+  margin: 0 0 35px 0 !important; }
+
+/* line 24, ../sass/custom/contact.scss */
+.contact-search-billboard h2 {
+  font-size: 22px !important;
+  font-weight: 400;
+  margin: 0 0 35px 0 !important; }
+
+/* line 36, ../sass/custom/contact.scss */
+.contact-billboard h1 {
+  font-size: 24px !important;
+  font-weight: 400; }
+
+/* line 43, ../sass/custom/contact.scss */
+.contact-form-container {
+  padding: 20px;
+  border-radius: 3px; }
+
+/* line 48, ../sass/custom/contact.scss */
+.contact-form-container form {
+  margin: 0; }
+
+/* line 52, ../sass/custom/contact.scss */
+.contact-form-container h1 {
+  text-align: left; }
+
+/* line 58, ../sass/custom/contact.scss */
+.contact-information-container {
+  margin: none;
+  padding: 0; }
+
+/* line 63, ../sass/custom/contact.scss */
+.contact-information-container h2 {
+  width: 100%;
+  line-height: 35px;
+  font-size: 22px;
+  font-weight: 500; }
+
+/* line 71, ../sass/custom/contact.scss */
+.contact-information-container h3 {
+  width: 100%;
+  line-height: 35px;
+  font-size: 18px;
+  font-weight: 500; }
+
+/* line 78, ../sass/custom/contact.scss */
+.contact-information-container p {
+  width: 100%;
+  line-height: 35px;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left; }
+
+/* line 86, ../sass/custom/contact.scss */
+.contact-type {
+  padding: 0 25px; }
+
+/* line 18, ../sass/custom.scss */
 .container {
   padding: 0 0 15px 0;
   width: 100%;
   margin: 0;
   min-height: 100%; }
 
-/* line 26, ../sass/custom.scss */
+/* line 27, ../sass/custom.scss */
 .billboard {
   width: 100%;
   padding: 10px 10px; }
 
-/* line 31, ../sass/custom.scss */
+/* line 32, ../sass/custom.scss */
+.is-white-background {
+  background-color: #fff; }
+
+/* line 36, ../sass/custom.scss */
 .billboard h1 {
   color: #000;
   font-size: 34px;
   margin: 20px 0;
   text-align: center; }
 
-/* line 38, ../sass/custom.scss */
+/* line 43, ../sass/custom.scss */
+.billboard-title {
+  color: #000;
+  font-size: 24px;
+  margin: 10px 0;
+  text-align: left;
+  font-weight: 500; }
+
+/* line 51, ../sass/custom.scss */
+.billboard-summary {
+  color: #000;
+  font-size: 18px;
+  margin-bottom: 25px;
+  text-align: left;
+  font-weight: 400; }
+
+/* line 59, ../sass/custom.scss */
 .catalog-link {
   width: 100%;
   margin-bottom: 40px;
   text-align: center; }
 
-/* line 44, ../sass/custom.scss */
+/* line 65, ../sass/custom.scss */
 .catalog-link a {
   text-decoration: none;
   font-size: 18px; }
 
-/* line 49, ../sass/custom.scss */
+/* line 70, ../sass/custom.scss */
 .catalog-link b {
   font-weight: 500 !important; }
 
-/* line 55, ../sass/custom.scss */
+/* line 76, ../sass/custom.scss */
 .listing-placeholder {
   width: 90%;
   margin: 15px auto;
@@ -4904,21 +5037,21 @@ Matthew Brewer - 9/20/2018
   border: 1px solid #BDBDBD;
   text-align: center; }
 
-/* line 65, ../sass/custom.scss */
+/* line 86, ../sass/custom.scss */
 .listing-placeholder p {
   font-size: 18px;
   color: #000;
   text-align: center;
   margin: 0; }
 
-/* line 74, ../sass/custom.scss */
+/* line 95, ../sass/custom.scss */
 footer {
   width: 100%;
   padding: 25px;
   background-color: #EEEEEE;
   border-top: 1px solid #BDBDBD; }
 
-/* line 81, ../sass/custom.scss */
+/* line 102, ../sass/custom.scss */
 footer p {
   width: 100%;
   margin: 10px 0 0 9px;
@@ -4926,14 +5059,14 @@ footer p {
   font-size: 14px;
   color: #000; }
 
-/* line 89, ../sass/custom.scss */
+/* line 110, ../sass/custom.scss */
 .footer-list a {
   margin: 5px 10px;
   font-size: 16px;
   color: #000 !important;
   text-decoration: none; }
 
-/* line 96, ../sass/custom.scss */
+/* line 117, ../sass/custom.scss */
 .footer-list a:hover {
   color: #000 !important; }
 
