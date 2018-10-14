@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Contact Tickets - Fortune Real Estate</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Kube CSS -->
+        <link rel="stylesheet" href="../static/css/kube.css">
+
+    </head>
+    <body class="grey-background">
+
+        <!-- Navigation Bar -->
+        {% include "includes/header.html" %}
+
+        <!-- Page Body -->
+
+        <div class="container is-container">
+            <div class="billboard is-white-background">
+                <div class="is-center is-90">
+                    <p class="billboard-title">Contact Tickets</p>
+                    <p class="billboard-summary">This is a summary of messages submitted from the Contact Form on the Contact page.</p>
+                </div>
+                <div>
+                    <table class="is-center is-90 is-border is-striped">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12:00 AM 10/1/2018</td>
+                                <td>John Doe</td>
+                                <td>(123) 457-7890</td>
+                                <td>johndoe@example.com</td>
+                                <td>Hello, I am interested in 123 Example Way, New York, NY. Can I schedule an appointment to see it in person?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kube framework's JavaScript -->
+        <script src="../static/js/kube.min.js"></script>
+        <script>
+            $K.init();
+        </script>
+    </body>
+</html>

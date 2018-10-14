@@ -11,6 +11,7 @@ Matthew Brewer - 9/20/2018
 @import "custom/sidebar";
 @import "custom/home";
 @import "custom/form";
+@import "custom/contact";
 
 // Container
 
@@ -28,11 +29,31 @@ Matthew Brewer - 9/20/2018
     padding: 10px 10px;
 }
 
+.is-white-background {
+    background-color: #fff;
+}
+
 .billboard h1 {
     color: #000;
     font-size: 34px;;
     margin: 20px 0;
     text-align: center;
+}
+
+.billboard-title {
+    color: #000;
+    font-size: 24px;
+    margin: 10px 0;
+    text-align: left;
+    font-weight:500;
+}
+
+.billboard-summary {
+    color: #000;
+    font-size: 18px;
+    margin-bottom: 25px;
+    text-align: left;
+    font-weight: 400;
 }
 
 .catalog-link {

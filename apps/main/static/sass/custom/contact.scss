@@ -1,0 +1,88 @@
+/*
+
+Stylesheet specific to the Contact page
+Not to be compiled on its own; imported by custom.scss
+Matthew Brewer - 9/26/2018
+
+*/
+
+@import "settings";
+
+// Contact Search Billboard
+
+.contact-search-billboard {
+    padding: 100px !important;
+    text-align: center;
+}
+
+.contact-search-billboard h1 {
+    font-size: 36px !important;
+    font-weight: 400;
+    margin:0 0 35px 0 !important;
+}
+
+.contact-search-billboard h2 {
+    font-size: 22px !important;
+    font-weight: 400;
+    margin:0 0 35px 0 !important;
+}
+
+// Contact Billboard
+
+.contact-billboard {
+
+}
+
+.contact-billboard h1{
+    font-size: 24px !important;
+    font-weight: 400;
+}
+
+// Contact Form
+
+.contact-form-container {
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.contact-form-container form {
+    margin: 0;
+}
+
+.contact-form-container h1 {
+    text-align: left;
+}
+
+// Contact Information
+
+.contact-information-container {
+    margin: none;
+    padding: 0;
+}
+
+.contact-information-container h2 {
+    width:100%;
+    line-height:35px;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+
+.contact-information-container h3 {
+    width:100%;
+    line-height:35px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.contact-information-container p {
+    width:100%;
+    line-height:35px;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.contact-type {
+    padding: 0 25px;
+}
