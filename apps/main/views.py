@@ -90,38 +90,39 @@ def dashboard(request):
 # AGENT
 
 # listings - /agent/listing
-# def listings(request):
-    # check_session = False
+def listings(request):
+    check_session = False
 
-    # # check if user in session
-    # if 'user_id' not in request.session:
-    #     return redirect('main:home')
+    # check if user in session
+    if 'user_id' not in request.session:
+        return redirect('main:home')
 
-    # check_session = True
-    # show_dash_head = True
+    check_session = True
+    show_dash_head = True
 
-    # # check user role
-    # user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
-    # if user_role != 'G':
-    #     return redirect('main:dashboard')
+    # check user role
+    user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
+    if user_role != 'G':
+        return redirect('main:dashboard')
     
-    # # get user name
-    # user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
-    # user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+    # get user name
+    user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+    user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
 
-    # # get all listings
-    # # listing = Listing.objects.values().all()
-    # # print listing
+    # get all listings
+    # listing = Listing.objects.values().all()
+    # print listing
 
-    # context = {
-    #     'check_session': check_session,
-    #     'show_head': show_dash_head,
-    #     'user_role': user_role,
-    #     'user': user,
-    #     # 'listing': listing
-    # }
+    context = {
+        'check_session': check_session,
+        'show_head': show_dash_head,
+        'user_role': user_role,
+        'user': user,
+        # 'listing': listing
+    }
 
     # return redirect('/comingsoon')
+    return render(request, 'coming-soon.html',context)
     # return render(request, 'listings.html',context)
 
 # create listing - /agent/create

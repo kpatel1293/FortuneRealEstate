@@ -15,7 +15,7 @@ urlpatterns = [
 
     # AGENT
 
-    # url(r'^agent/listing$', views.listings, name='listings'),                       # listings          - /agent/listing
+    url(r'^agent/listing$', views.listings, name='listings'),                       # listings          - /agent/listing
     # url(r'^agent/create$', views.create_listing, name='create_listing'),            # create listing    - /agent/create
 
     # ADMIN
