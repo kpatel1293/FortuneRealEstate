@@ -146,26 +146,27 @@ class ListingManager(models.Manager):
         # ...price
         if len(form_data['price']) == 0:
             errors.append('Price can not be left empty!')
-        # # ...bedrooms
-        # if type(form_data['bedrooms']) != int:
-        #     errors.append('Bedroooms must be numbers only!')
-        # # ...bathrooms
-        # if type(form_data['bathrooms']) != float or type(form_data['bathrooms']) != int:
-        #     errors.append('Bathrooms must be numbers only!')
-        # # ...sq foot
-        # if type(form_data['sqFootage']) != int:
-        #     errors.append('Square footage must be numbers only!')
-        # # ...lot size
-        # if type(form_data['lotSize']) != int:
-        #     errors.append('Lot size must be numbers only!')
+        # ...bedrooms
+        if len(form_data['bedrooms']) == 0:
+            errors.append('Bedroooms can not be left empty!')
+        # ...bathrooms
+        if len(form_data['bathrooms']) == 0:
+            errors.append('Bathrooms can not be left empty!')
+        # ...sq foot
+        if len(form_data['sqFootage']) == 0:
+            errors.append('Square footage can not be left empty!')
+        # ...lot size
+        if len(form_data['lotSize']) == 0:
+            errors.append('Lot size can not be left empty!')
         
         # check if any errors
         if errors: # if true, display errors
             return (False, errors)
 
         # store listing to database
-        create_listing = self.create(addressOne=form_data['addressLine1'],addressTwo=form_data['addressLine2'],city=form_data['city'],state=form_data['state'],zipcode=form_data['zip'],price=form_data['price'],listing_type=form_data['listing-type'],bedrooms=form_data['bedrooms'],bathrooms=form_data['bathrooms'],sq_footage=form_data['sqFootage'],lot_size=form_data['lotSize'],desc=form_data['desc'],agentId=User.objects.get(id=user_id),image=form_data['thumbnail'])
-        
+        create_listing = self.create(addressOne=form_data['addressLine1'],addressTwo=form_data['addressLine2'],city=form_data['city'],state=form_data['state'],zipcode=form_data['zip'],price=form_data['price'],listing=form_data['listing-type'],bedrooms=form_data['bedrooms'],bathrooms=form_data['bathrooms'],sq_footage=form_data['sqFootage'],lot_size=form_data['lotSize'],desc=form_data['desc'],agentId=User.objects.get(id=user_id))
+        # ,image=form_data['thumbnail']
+
         print 'ADDED LISTING SUCCESSFULLY! This is the address: {}'.format(create_listing)
 
         return (True, create_listing.id)
@@ -173,7 +174,7 @@ class ListingManager(models.Manager):
 
 # listing table
 class Listing(models.Model):
-    LISTING_TYPE_CHOICES = (
+    LISTING_CHOICES = (
         ('S', 'Single-Family Home'),
         ('A', 'Apartment'),
         ('C', 'Condo'),
@@ -192,7 +193,7 @@ class Listing(models.Model):
     
     # Details
     price = models.CharField(max_length=255)
-    listing_type = models.CharField(max_length=1, choices=LISTING_TYPE_CHOICES)
+    listing = models.CharField(max_length=1, choices=LISTING_CHOICES)
     bedrooms = models.IntegerField()
     bathrooms = models.FloatField()
     sq_footage = models.IntegerField()
@@ -201,7 +202,7 @@ class Listing(models.Model):
     agentId = models.ForeignKey(User, related_name="agent_id")
     
     # Image
-    image = models.ImageField(upload_to='./static/images/')
+    # image = models.ImageField(upload_to='./static/images/')
 
     # timestaps
     created_at = models.DateTimeField(auto_now_add = True)
