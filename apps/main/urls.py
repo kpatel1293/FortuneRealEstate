@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     # TEMPLATES
+    url(r'^comingsoon$', views.coming_soon, name='coming_soon'),                     # coming soon page  - /comingsoon    
     url(r'^$', views.home, name='home'),                                            # home page         - /
     url(r'^login$', views.login, name='login'),                                     # login page        - /login
     url(r'^register$', views.register, name='register'),                            # register page     - /register
@@ -14,7 +15,7 @@ urlpatterns = [
 
     # AGENT
 
-    url(r'^agent/listing$', views.listings, name='listings'),                       # listings - /agent/listing
+    url(r'^agent/listing$', views.listings, name='listings'),                       # listings          - /agent/listing
     url(r'^agent/create$', views.create_listing, name='create_listing'),            # create listing    - /agent/create
 
     # ADMIN
@@ -23,6 +24,7 @@ urlpatterns = [
     # create user - /admin/user
     # activity - /admin/activity
     # configure - /admin/config
+    url(r'^admin/ticket$', views.ticket, name='ticket'),                            # contact ticket    - /admin/ticket
     
     url(r'^catalog$', views.catalog, name='catalog'),                               # catalog           - /catalog
     url(r'^contact$', views.contact_us, name='contact_us'),                         # contact us        - /contact
@@ -32,5 +34,7 @@ urlpatterns = [
     url(r'^user$', views.validatelogin, name='login-user'),                         # logging in users  - /user
     url(r'^create$', views.create, name='signup'),                                  # register user     - /create
     url(r'^logout$', views.logout, name='logout'),                                  # logout user       - /logout
-    url(r'^agent/create/new$', views.new_listing, name='new_listing')               # new listing    - /agent/create/new
+    url(r'^agent/create/new$', views.new_listing, name='new_listing'),              # new listing       - /agent/create/new
+    
+    url(r'^newticket$', views.new_ticket, name='new_ticket')                        # new ticket        - /newticket
 ]

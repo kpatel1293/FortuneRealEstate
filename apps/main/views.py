@@ -49,11 +49,12 @@ def register(request):
 
 # forgot password - /forgotpassword
 def forgot_pwd(request):
-    # check if user in session
-    if 'user_id' in request.session:
-        return redirect('main:dashboard')
+    # # check if user in session
+    # if 'user_id' in request.session:
+    #     return redirect('main:dashboard')
 
-    return render(request,'forgotpwd.html')
+    # return render(request,'forgotpwd.html')
+    return redirect('/comingsoon')
 
 # dashboard - /dashboard
 def dashboard(request):
@@ -90,66 +91,68 @@ def dashboard(request):
 
 # listings - /agent/listing
 def listings(request):
-    check_session = False
+    # check_session = False
 
-    # check if user in session
-    if 'user_id' not in request.session:
-        return redirect('main:home')
+    # # check if user in session
+    # if 'user_id' not in request.session:
+    #     return redirect('main:home')
 
-    check_session = True
-    show_dash_head = True
+    # check_session = True
+    # show_dash_head = True
 
-    # check user role
-    user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
-    if user_role != 'G':
-        return redirect('main:dashboard')
+    # # check user role
+    # user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
+    # if user_role != 'G':
+    #     return redirect('main:dashboard')
     
-    # get user name
-    user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
-    user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+    # # get user name
+    # user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+    # user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
 
-    # get all listings
-    listing = Listing.objects.values().all()
-    print listing
+    # # get all listings
+    # # listing = Listing.objects.values().all()
+    # # print listing
 
-    context = {
-        'check_session': check_session,
-        'show_head': show_dash_head,
-        'user_role': user_role,
-        'user': user,
-        'listing': listing
-    }
+    # context = {
+    #     'check_session': check_session,
+    #     'show_head': show_dash_head,
+    #     'user_role': user_role,
+    #     'user': user,
+    #     # 'listing': listing
+    # }
 
-    return render(request, 'listings.html',context)
+    return redirect('/comingsoon')
+    # return render(request, 'listings.html',context)
 
 # create listing - /agent/create
 def create_listing(request):
-    check_session = False
+    # check_session = False
 
-    # check if user in session
-    if 'user_id' not in request.session:
-        return redirect('main:home')
+    # # check if user in session
+    # if 'user_id' not in request.session:
+    #     return redirect('main:home')
 
-    check_session = True
-    show_dash_head = True
+    # check_session = True
+    # show_dash_head = True
 
-    # check user role
-    user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
-    if user_role != 'G':
-        return redirect('main:dashboard')
+    # # check user role
+    # user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
+    # if user_role != 'G':
+    #     return redirect('main:dashboard')
     
-    # get user name
-    user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
-    user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+    # # get user name
+    # user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+    # user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
 
-    context = {
-        'check_session': check_session,
-        'show_head': show_dash_head,
-        'user_role': user_role,
-        'user': user
-    }
+    # context = {
+    #     'check_session': check_session,
+    #     'show_head': show_dash_head,
+    #     'user_role': user_role,
+    #     'user': user
+    # }
 
-    return render(request, 'create_listing.html',context)
+    return redirect('/comingsoon')
+    # return render(request, 'create_listing.html',context)
 
 # ADMIN
 
@@ -158,36 +161,68 @@ def create_listing(request):
 # activity - /admin/activity
 # configure - /admin/config
 
-
-# catalog - /catalog
-def catalog(request):
+# ticket - /admin/ticket
+def ticket(request):
     check_session = False
+
     # check if user in session
-    if 'user_id' in request.session:
-        check_session = True
-        
-    show_dash_head = False
+    if 'user_id' not in request.session:
+        return redirect('main:home')
 
-    if check_session:
-        # get user name
-        user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
-        user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
-    else:
-        user = ''
+    check_session = True
+    show_dash_head = True
 
-    # get all listings
-    listing = Listing.objects.values().all()
-    print listing
+    # check user role
+    user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
     
+    # get user name
+    user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+    user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+
+    # get contact tickets
+    get_contact = ContactTicket.objects.all()
+    print get_contact
+
     context = {
         'check_session': check_session,
         'show_head': show_dash_head,
+        'user_role': user_role,
         'user': user,
-        'listing': listing
+        'get_contact': get_contact
     }
 
+    return render(request, 'contact-tickets.html',context)
 
-    return render(request,'catalog.html',context)
+# catalog - /catalog
+def catalog(request):
+    # check_session = False
+    # # check if user in session
+    # if 'user_id' in request.session:
+    #     check_session = True
+        
+    # show_dash_head = False
+
+    # if check_session:
+    #     # get user name
+    #     user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+    #     user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+    # else:
+    #     user = ''
+
+    # # get all listings
+    # # listing = Listing.objects.values().all()
+    # # print listing
+    
+    # context = {
+    #     'check_session': check_session,
+    #     'show_head': show_dash_head,
+    #     'user': user,
+    #     # 'listing': listing
+    # }
+
+
+    # return render(request,'catalog.html',context)
+    return redirect('/comingsoon')
 
 # contact us - /contact
 def contact_us(request):
@@ -215,29 +250,54 @@ def contact_us(request):
 
 # privacy - /privacy
 def privacy(request):
-    check_session = False
-    # check if user in session
-    if 'user_id' in request.session:
-        check_session = True
+    # check_session = False
+    # # check if user in session
+    # if 'user_id' in request.session:
+    #     check_session = True
 
-    context = {
-        'check_session': check_session
-    }
+    # context = {
+    #     'check_session': check_session
+    # }
 
-    return render(request,'privacy.html',context)
+    # return render(request,'privacy.html',context)
+    return redirect('/comingsoon')
 
 # terms of service - /termsofservice
 def terms_of_service(request):
+    # check_session = False
+    # # check if user in session
+    # if 'user_id' in request.session:
+    #     check_session = True
+
+    # context = {
+    #     'check_session': check_session
+    # }
+    # return render(request,'terms_of_service.html',context)
+    return redirect('/comingsoon')
+
+def coming_soon(request):
     check_session = False
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
+    
+    show_dash_head = False
+
+    if check_session:
+        # get user name
+        user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+        user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+        print user
+    else:
+        user = ''
 
     context = {
-        'check_session': check_session
+        'check_session': check_session,
+        'show_head': show_dash_head,
+        'user': user
     }
 
-    return render(request,'terms_of_service.html',context)
+    return render(request,'coming-soon.html',context)
 
 # Redirect/Logic
 
@@ -293,10 +353,25 @@ def logout(request):
 # new listing - /agent/create/new
 def new_listing(request):
     # store user in session
-    user = request.session['user_id']
+    # user = request.session['user_id']
 
-    # validate listing
-    valid, result = Listing.objects.create_listing(request.POST, user)
+    # # validate listing
+    # valid, result = Listing.objects.create_listing(request.POST, user)
+
+    # print valid
+
+    # # check for errors
+    # if not valid:
+    #     for e in result:
+    #         messages.error(request, e)
+    #     # if there are errors return back to listing page
+    #     return redirect('main:create_listing')
+
+    return redirect('main:dashboard')
+
+def new_ticket(request):
+    # validate users
+    valid, result = ContactTicket.objects.validateTicket(request.POST)
 
     print valid
 
@@ -304,7 +379,7 @@ def new_listing(request):
     if not valid:
         for e in result:
             messages.error(request, e)
-        # if there are errors return back to listing page
-        return redirect('main:create_listing')
+        # if there are errors return back to registeration page 
+        return redirect('main:contact_us')
 
-    return redirect('main:dashboard')
+    return redirect('main:contact_us')

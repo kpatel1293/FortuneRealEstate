@@ -42,6 +42,15 @@
                                 <td>johndoe@example.com</td>
                                 <td>Hello, I am interested in 123 Example Way, New York, NY. Can I schedule an appointment to see it in person?</td>
                             </tr>
+                            {% for contact in get_contact %}
+                            <tr>
+                                <td>{{contact.created_at}}</td>
+                                <td>{{contact.name}}</td>
+                                <td>{{contact.phone}}</td>
+                                <td>{{contact.email}}</td>
+                                <td>{{contact.message}}</td>
+                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
