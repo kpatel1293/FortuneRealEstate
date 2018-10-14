@@ -48,13 +48,13 @@ def register(request):
     return render(request,'register.html')
 
 # forgot password - /forgotpassword
-def forgot_pwd(request):
+# def forgot_pwd(request):
     # # check if user in session
     # if 'user_id' in request.session:
     #     return redirect('main:dashboard')
 
     # return render(request,'forgotpwd.html')
-    return redirect('/comingsoon')
+    # return redirect('/comingsoon')
 
 # dashboard - /dashboard
 def dashboard(request):
@@ -90,7 +90,7 @@ def dashboard(request):
 # AGENT
 
 # listings - /agent/listing
-def listings(request):
+# def listings(request):
     # check_session = False
 
     # # check if user in session
@@ -121,11 +121,11 @@ def listings(request):
     #     # 'listing': listing
     # }
 
-    return redirect('/comingsoon')
+    # return redirect('/comingsoon')
     # return render(request, 'listings.html',context)
 
 # create listing - /agent/create
-def create_listing(request):
+# def create_listing(request):
     # check_session = False
 
     # # check if user in session
@@ -151,7 +151,7 @@ def create_listing(request):
     #     'user': user
     # }
 
-    return redirect('/comingsoon')
+    # return redirect('/comingsoon')
     # return render(request, 'create_listing.html',context)
 
 # ADMIN
@@ -194,7 +194,7 @@ def ticket(request):
     return render(request, 'contact-tickets.html',context)
 
 # catalog - /catalog
-def catalog(request):
+# def catalog(request):
     # check_session = False
     # # check if user in session
     # if 'user_id' in request.session:
@@ -222,7 +222,7 @@ def catalog(request):
 
 
     # return render(request,'catalog.html',context)
-    return redirect('/comingsoon')
+    # return redirect('/comingsoon')
 
 # contact us - /contact
 def contact_us(request):
@@ -249,7 +249,7 @@ def contact_us(request):
     return render(request,'contactus.html',context)
 
 # privacy - /privacy
-def privacy(request):
+# def privacy(request):
     # check_session = False
     # # check if user in session
     # if 'user_id' in request.session:
@@ -260,10 +260,10 @@ def privacy(request):
     # }
 
     # return render(request,'privacy.html',context)
-    return redirect('/comingsoon')
+    # return redirect('/comingsoon')
 
 # terms of service - /termsofservice
-def terms_of_service(request):
+# def terms_of_service(request):
     # check_session = False
     # # check if user in session
     # if 'user_id' in request.session:
@@ -272,8 +272,9 @@ def terms_of_service(request):
     # context = {
     #     'check_session': check_session
     # }
+    
     # return render(request,'terms_of_service.html',context)
-    return redirect('/comingsoon')
+    # return redirect('/comingsoon')
 
 def coming_soon(request):
     check_session = False
