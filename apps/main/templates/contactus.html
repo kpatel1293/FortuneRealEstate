@@ -118,7 +118,8 @@
                     <div class="is-col is-50">
                         <div class="contact-form-container is-shadow-3">
                             <h1>Contact Us</h1>
-                            <form method="post" action="">
+                            <form method="post" action="/newticket">
+                                {% csrf_token %}
                                 <div class="is-row">
                                     <div class="form-item is-col is-50">
                                         <label>Name <span class="is-req">*</span></label>
@@ -135,13 +136,20 @@
                                 </div>
                                 <div class="form-item">
                                     <label>Message</label>
-                                    <textarea rows="5" placeholder="Enter your message to us here."></textarea>
+                                    <textarea rows="5" name="message" placeholder="Enter your message to us here."></textarea>
                                 </div>
                                 <input type="submit" class="button" value="Send Message">
                             </form>
                         </div>
                     </div>
-
+                    <!-- validations -->
+                    {% if messages %}
+                        <div class="messages alert is-error">
+                            {% for message in messages %}
+                                <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -149,7 +157,7 @@
         <!-- Footer -->
         <footer>
             <div class="footer-list">
-                <a href="">Contact Us</a><a href="">Privacy</a><a href="">Terms of Service</a>
+                <a href="/contact">Contact Us</a><a href="/comingsoon">Privacy</a><a href="/comingsoon">Terms of Service</a>
             </div>
             <p>Copyright &copy; 2018 Real Estate Company. All rights reserved. </p>
         </footer>
