@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from .models import *
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+
 
 # Create your views here.
 
@@ -125,34 +128,36 @@ def dashboard(request):
     # return render(request, 'listings.html',context)
 
 # create listing - /agent/create
-# def create_listing(request):
-    # check_session = False
+def create_listing(request):
+    check_session = False
 
-    # # check if user in session
-    # if 'user_id' not in request.session:
-    #     return redirect('main:home')
+    # check if user in session
+    if 'user_id' not in request.session:
+        return redirect('main:home')
 
-    # check_session = True
-    # show_dash_head = True
+    check_session = True
+    show_dash_head = True
 
-    # # check user role
-    # user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
-    # if user_role != 'G':
-    #     return redirect('main:dashboard')
+    # check user role
+    user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
+    if user_role != 'G':
+        return redirect('main:dashboard')
     
-    # # get user name
-    # user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
-    # user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+    # get user name
+    user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+    user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
 
-    # context = {
-    #     'check_session': check_session,
-    #     'show_head': show_dash_head,
-    #     'user_role': user_role,
-    #     'user': user
-    # }
+    print Listing.objects.all()
+
+    context = {
+        'check_session': check_session,
+        'show_head': show_dash_head,
+        'user_role': user_role,
+        'user': user
+    }
 
     # return redirect('/comingsoon')
-    # return render(request, 'create_listing.html',context)
+    return render(request, 'create_listing.html',context)
 
 # ADMIN
 
@@ -250,6 +255,7 @@ def contact_us(request):
 
 # privacy - /privacy
 # def privacy(request):
+
     # check_session = False
     # # check if user in session
     # if 'user_id' in request.session:
@@ -259,7 +265,7 @@ def contact_us(request):
     #     'check_session': check_session
     # }
 
-    # return render(request,'privacy.html',context)
+    # return render(request,'privacy.html')
     # return redirect('/comingsoon')
 
 # terms of service - /termsofservice
@@ -354,21 +360,28 @@ def logout(request):
 # new listing - /agent/create/new
 def new_listing(request):
     # store user in session
-    # user = request.session['user_id']
+    user = request.session['user_id']
 
-    # # validate listing
-    # valid, result = Listing.objects.create_listing(request.POST, user)
+    # get image path
+    myFile = request.FILES['thumbnail']
+    fs = FileSystemStorage()
+    filename = fs.save(myFile.name, myFile)
+    uploaded_file_url = fs.url(filename)
+    print uploaded_file_url
 
-    # print valid
+    # validate listing
+    valid, result = Listing.objects.create_listing(request.POST, user, uploaded_file_url)
 
-    # # check for errors
-    # if not valid:
-    #     for e in result:
-    #         messages.error(request, e)
-    #     # if there are errors return back to listing page
-    #     return redirect('main:create_listing')
+    print valid
 
-    return redirect('main:dashboard')
+    # check for errors
+    if not valid:
+        for e in result:
+            messages.error(request, e)
+        # if there are errors return back to listing page
+        return redirect('main:create_listing')
+
+    return redirect('main:create_listing')
 
 def new_ticket(request):
     # validate users
