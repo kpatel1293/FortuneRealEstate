@@ -1,5 +1,7 @@
 from django.conf.urls import url
 from . import views
+from django.conf import settings # IMAGE
+from django.conf.urls.static import static # IMAGE
 
 urlpatterns = [
     # TEMPLATES
@@ -16,7 +18,7 @@ urlpatterns = [
     # AGENT
 
     # url(r'^agent/listing$', views.listings, name='listings'),                       # listings          - /agent/listing
-    # url(r'^agent/create$', views.create_listing, name='create_listing'),            # create listing    - /agent/create
+    url(r'^agent/create$', views.create_listing, name='create_listing'),            # create listing    - /agent/create
 
     # ADMIN
 
@@ -34,7 +36,11 @@ urlpatterns = [
     url(r'^user$', views.validatelogin, name='login-user'),                         # logging in users  - /user
     url(r'^create$', views.create, name='signup'),                                  # register user     - /create
     url(r'^logout$', views.logout, name='logout'),                                  # logout user       - /logout
-    # url(r'^agent/create/new$', views.new_listing, name='new_listing'),              # new listing       - /agent/create/new
+    url(r'^agent/create/new$', views.new_listing, name='new_listing'),              # new listing       - /agent/create/new
     
     url(r'^newticket$', views.new_ticket, name='new_ticket')                        # new ticket        - /newticket
 ]
+
+# IMAGE
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

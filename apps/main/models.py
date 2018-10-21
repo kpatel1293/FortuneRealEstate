@@ -159,113 +159,113 @@ class ContactTicket(models.Model):
 
 # LISTING
 # listing manager
-# class ListingManager(models.Manager):
-#     def create_listing(self, form_data, user_id):
-#         # empty errors list
-#         errors = []
+class ListingManager(models.Manager):
+    def create_listing(self, form_data, user_id, image_path):
+        # empty errors list
+        errors = []
 
-#         # Address
-#         # ...address
-#         if len(form_data['addressLine1']) == 0:
-#             errors.append('Address can not be left empty!')
-#         # ...city
-#         if len(form_data['city']) == 0:
-#             errors.append('City can not be left empty!')
-#         # state
-#         if len(form_data['state']) == 0:
-#             errors.append('State can not be left empty!')
-#         if len(form_data['state']) > 2:
-#             errors.append('Enter the abbreviation of the state only!')
-#         # ...check state is valid or not
-#         list_of_state = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
+        # Address
+        # ...address
+        if len(form_data['addressLine1']) == 0:
+            errors.append('Address can not be left empty!')
+        # ...city
+        if len(form_data['city']) == 0:
+            errors.append('City can not be left empty!')
+        # state
+        if len(form_data['state']) == 0:
+            errors.append('State can not be left empty!')
+        if len(form_data['state']) > 2:
+            errors.append('Enter the abbreviation of the state only!')
+        # ...check state is valid or not
+        list_of_state = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
         
-#         found = False
-#         for list in list_of_state:
-#             if form_data['state'] == list:
-#                 found = True
-#                 break
+        found = False
+        for list in list_of_state:
+            if form_data['state'] == list:
+                found = True
+                break
         
-#         if found:
-#             print form_data['state']
-#         else:
-#             errors.append('Invalid state!')
+        if found:
+            print form_data['state']
+        else:
+            errors.append('Invalid state!')
 
-#         # zip code
-#         if len(form_data['zip']) == 0:
-#             errors.append('Zipcode can not be left empty!')
-#         if len(form_data['zip']) > 6:
-#             errors.append('Invalid zipcode!')
+        # zip code
+        if len(form_data['zip']) == 0:
+            errors.append('Zipcode can not be left empty!')
+        if len(form_data['zip']) > 6:
+            errors.append('Invalid zipcode!')
         
-#         # Details
-#         # ...price
-#         if len(form_data['price']) == 0:
-#             errors.append('Price can not be left empty!')
-#         # ...bedrooms
-#         if len(form_data['bedrooms']) == 0:
-#             errors.append('Bedroooms can not be left empty!')
-#         # ...bathrooms
-#         if len(form_data['bathrooms']) == 0:
-#             errors.append('Bathrooms can not be left empty!')
-#         # ...sq foot
-#         if len(form_data['sqFootage']) == 0:
-#             errors.append('Square footage can not be left empty!')
-#         # ...lot size
-#         if len(form_data['lotSize']) == 0:
-#             errors.append('Lot size can not be left empty!')
+        # Details
+        # ...price
+        if len(form_data['price']) == 0:
+            errors.append('Price can not be left empty!')
+        # ...bedrooms
+        if len(form_data['bedrooms']) == 0:
+            errors.append('Bedroooms can not be left empty!')
+        # ...bathrooms
+        if len(form_data['bathrooms']) == 0:
+            errors.append('Bathrooms can not be left empty!')
+        # ...sq foot
+        if len(form_data['sqFootage']) == 0:
+            errors.append('Square footage can not be left empty!')
+        # ...lot size
+        if len(form_data['lotSize']) == 0:
+            errors.append('Lot size can not be left empty!')
         
-#         # check if any errors
-#         if errors: # if true, display errors
-#             return (False, errors)
+        # check if any errors
+        if errors: # if true, display errors
+            return (False, errors)
 
-#         # store listing to database
-#         create_listing = self.create(addressOne=form_data['addressLine1'],addressTwo=form_data['addressLine2'],city=form_data['city'],state=form_data['state'],zipcode=form_data['zip'],price=form_data['price'],listing=form_data['listing-type'],bedrooms=form_data['bedrooms'],bathrooms=form_data['bathrooms'],sq_footage=form_data['sqFootage'],lot_size=form_data['lotSize'],desc=form_data['desc'],agentId=User.objects.get(id=user_id))
-#         # ,image=form_data['thumbnail']
+        # store listing to database
+        create_listing = self.create(addressOne=form_data['addressLine1'],addressTwo=form_data['addressLine2'],city=form_data['city'],state=form_data['state'],zipcode=form_data['zip'],price=form_data['price'],listing=form_data['listing-type'],bedrooms=form_data['bedrooms'],bathrooms=form_data['bathrooms'],sq_footage=form_data['sqFootage'],lot_size=form_data['lotSize'],desc=form_data['desc'],agentId=User.objects.get(id=user_id),image=image_path)
+        # ,image=form_data['thumbnail']
 
-#         print 'ADDED LISTING SUCCESSFULLY! This is the address: {}'.format(create_listing)
+        print 'ADDED LISTING SUCCESSFULLY! This is the address: {}'.format(create_listing)
 
-#         return (True, create_listing.id)
+        return (True, create_listing.id)
 
 
-# # listing table
-# class Listing(models.Model):
-#     LISTING_CHOICES = (
-#         ('S', 'Single-Family Home'),
-#         ('A', 'Apartment'),
-#         ('C', 'Condo'),
-#         ('T', 'Townhouse'),
-#         ('L', 'Land'),
-#         ('M', 'Mult-Family Home'),
-#         ('F', 'Farm/Ranch')
-#     )
+# listing table
+class Listing(models.Model):
+    LISTING_CHOICES = (
+        ('S', 'Single-Family Home'),
+        ('A', 'Apartment'),
+        ('C', 'Condo'),
+        ('T', 'Townhouse'),
+        ('L', 'Land'),
+        ('M', 'Mult-Family Home'),
+        ('F', 'Farm/Ranch')
+    )
 
-#     # Address
-#     addressOne = models.CharField(max_length=255)
-#     addressTwo = models.CharField(max_length=255)  
-#     city = models.CharField(max_length=255)
-#     state = models.CharField(max_length=255) 
-#     zipcode = models.IntegerField()
+    # Address
+    addressOne = models.CharField(max_length=255)
+    addressTwo = models.CharField(max_length=255)  
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255) 
+    zipcode = models.IntegerField()
     
-#     # Details
-#     price = models.CharField(max_length=255)
-#     listing = models.CharField(max_length=1, choices=LISTING_CHOICES)
-#     bedrooms = models.IntegerField()
-#     bathrooms = models.FloatField()
-#     sq_footage = models.IntegerField()
-#     lot_size = models.IntegerField()
-#     desc = models.TextField()
-#     agentId = models.ForeignKey(User, related_name="agent_id")
+    # Details
+    price = models.CharField(max_length=255)
+    listing = models.CharField(max_length=1, choices=LISTING_CHOICES)
+    bedrooms = models.IntegerField()
+    bathrooms = models.FloatField()
+    sq_footage = models.IntegerField()
+    lot_size = models.IntegerField()
+    desc = models.TextField()
+    agentId = models.ForeignKey(User, related_name="agent_id")
     
-#     # Image
-#     # image = models.ImageField(upload_to='./static/images/')
+    # Image
+    image = models.FilePathField(path='media/')
 
-#     # timestaps
-#     created_at = models.DateTimeField(auto_now_add = True)
-#     updated_at = models.DateTimeField(auto_now=True)
+    # timestaps
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-#     objects = ListingManager()
+    objects = ListingManager()
 
-#     def __str__(self):
-#         return self.addressOne
+    def __str__(self):
+        return self.addressOne
 
 # IMAGE
 # image manager
