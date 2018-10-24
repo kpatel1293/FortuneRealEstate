@@ -4973,30 +4973,96 @@ Matthew Brewer - 9/20/2018
 .contact-type {
   padding: 0 25px; }
 
-/* line 18, ../sass/custom.scss */
+/*
+
+Custom CSS Stylesheet for Real Estate Website Project
+Not to be compiled on its own; imported by custom.scss
+Matthew Brewer - 9/20/2018
+
+*/
+/* line 9, ../sass/custom/catalog.scss */
+.catalog-container {
+  padding: 25px; }
+
+/* line 18, ../sass/custom/catalog.scss */
+.catalog-results {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 400; }
+
+/* line 30, ../sass/custom/catalog.scss */
+.catalog-container .grid-container .listing {
+  padding: 5px;
+  width: 640px;
+  height: auto;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  margin-bottom: 15px; }
+
+/* line 39, ../sass/custom/catalog.scss */
+.catalog-container .grid-container .listing:hover {
+  transition: 0.1s linear;
+  border: 1px solid #BDBDBD; }
+
+/* line 44, ../sass/custom/catalog.scss */
+.catalog-container .grid-container .listing .thumbnail-container {
+  position: relative; }
+
+/* line 48, ../sass/custom/catalog.scss */
+.catalog-container .grid-container .listing .listing-thumbnail {
+  width: auto;
+  height: auto; }
+
+/* line 53, ../sass/custom/catalog.scss */
+.catalog-container .grid-container .listing .price {
+  line-height: 35px;
+  font-weight: 400;
+  font-size: 28px;
+  color: #fff;
+  text-shadow: 0 1px 1px #000;
+  position: absolute;
+  bottom: 5px;
+  left: 15px; }
+
+/* line 68, ../sass/custom/catalog.scss */
+.catalog-container .grid-container .listing .information-panel p {
+  line-height: 35px;
+  font-weight: 400;
+  font-size: 16px;
+  margin: 0; }
+
+/* line 75, ../sass/custom/catalog.scss */
+.catalog-container .grid-container .listing .information-panel p .bold {
+  font-weight: 500; }
+
+/* line 79, ../sass/custom/catalog.scss */
+.catalog-container .grid-container .listing .information-panel a {
+  text-decoration: none; }
+
+/* line 20, ../sass/custom.scss */
 .container {
   padding: 0 0 15px 0;
   width: 100%;
   margin: 0;
   min-height: 100%; }
 
-/* line 27, ../sass/custom.scss */
+/* line 29, ../sass/custom.scss */
 .billboard {
   width: 100%;
   padding: 10px 10px; }
 
-/* line 32, ../sass/custom.scss */
+/* line 34, ../sass/custom.scss */
 .is-white-background {
   background-color: #fff; }
 
-/* line 36, ../sass/custom.scss */
+/* line 38, ../sass/custom.scss */
 .billboard h1 {
   color: #000;
   font-size: 34px;
   margin: 20px 0;
   text-align: center; }
 
-/* line 43, ../sass/custom.scss */
+/* line 45, ../sass/custom.scss */
 .billboard-title {
   color: #000;
   font-size: 24px;
@@ -5004,7 +5070,7 @@ Matthew Brewer - 9/20/2018
   text-align: left;
   font-weight: 500; }
 
-/* line 51, ../sass/custom.scss */
+/* line 53, ../sass/custom.scss */
 .billboard-summary {
   color: #000;
   font-size: 18px;
@@ -5012,22 +5078,22 @@ Matthew Brewer - 9/20/2018
   text-align: left;
   font-weight: 400; }
 
-/* line 59, ../sass/custom.scss */
+/* line 61, ../sass/custom.scss */
 .catalog-link {
   width: 100%;
   margin-bottom: 40px;
   text-align: center; }
 
-/* line 65, ../sass/custom.scss */
+/* line 67, ../sass/custom.scss */
 .catalog-link a {
   text-decoration: none;
   font-size: 18px; }
 
-/* line 70, ../sass/custom.scss */
+/* line 72, ../sass/custom.scss */
 .catalog-link b {
   font-weight: 500 !important; }
 
-/* line 76, ../sass/custom.scss */
+/* line 78, ../sass/custom.scss */
 .listing-placeholder {
   width: 90%;
   margin: 15px auto;
@@ -5037,21 +5103,21 @@ Matthew Brewer - 9/20/2018
   border: 1px solid #BDBDBD;
   text-align: center; }
 
-/* line 86, ../sass/custom.scss */
+/* line 88, ../sass/custom.scss */
 .listing-placeholder p {
   font-size: 18px;
   color: #000;
   text-align: center;
   margin: 0; }
 
-/* line 95, ../sass/custom.scss */
+/* line 97, ../sass/custom.scss */
 footer {
   width: 100%;
   padding: 25px;
   background-color: #EEEEEE;
   border-top: 1px solid #BDBDBD; }
 
-/* line 102, ../sass/custom.scss */
+/* line 104, ../sass/custom.scss */
 footer p {
   width: 100%;
   margin: 10px 0 0 9px;
@@ -5059,14 +5125,14 @@ footer p {
   font-size: 14px;
   color: #000; }
 
-/* line 110, ../sass/custom.scss */
+/* line 112, ../sass/custom.scss */
 .footer-list a {
   margin: 5px 10px;
   font-size: 16px;
   color: #000 !important;
   text-decoration: none; }
 
-/* line 117, ../sass/custom.scss */
+/* line 119, ../sass/custom.scss */
 .footer-list a:hover {
   color: #000 !important; }
 
