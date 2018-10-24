@@ -1,0 +1,81 @@
+/*
+
+Custom CSS Stylesheet for Real Estate Website Project
+Not to be compiled on its own; imported by custom.scss
+Matthew Brewer - 9/20/2018
+
+*/
+
+.catalog-container {
+    padding: 25px;
+}
+
+.catalog-container .grid-container {
+}
+
+// Title
+
+.catalog-results {
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+// Navigation / Search / Filters
+
+
+
+// Grid
+
+.catalog-container .grid-container .listing {
+    padding: 5px;
+    width: 640px;
+    height: auto;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.catalog-container .grid-container .listing:hover {
+    transition: 0.1s linear;
+    border: 1px solid $dark-grey;
+}
+
+.catalog-container .grid-container .listing .thumbnail-container {
+    position: relative;
+}
+
+.catalog-container .grid-container .listing .listing-thumbnail {
+    width: auto;
+    height: auto;
+}
+
+.catalog-container .grid-container .listing .price {
+    line-height: 35px;
+    font-weight: 400;
+    font-size: 28px;
+    color: #fff;
+    text-shadow: 0 1px 1px #000;
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+}
+
+.catalog-container .grid-container .listing .information-panel {
+
+}
+
+.catalog-container .grid-container .listing .information-panel p {
+    line-height: 35px;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0;
+}
+
+.catalog-container .grid-container .listing .information-panel p .bold {
+    font-weight: 500;
+}
+
+.catalog-container .grid-container .listing .information-panel a {
+    text-decoration: none;
+}
