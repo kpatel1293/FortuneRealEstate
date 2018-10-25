@@ -26,6 +26,12 @@ def home(request):
     else:
         user = ''
 
+    # LISTINGS
+    # ...recently added
+
+    # ...featured home
+    # ...most affordable homes
+
     context = {
         'check_session': check_session,
         'show_head': show_dash_head,
@@ -397,3 +403,20 @@ def new_ticket(request):
         return redirect('main:contact_us')
 
     return redirect('main:contact_us')
+
+# search bar
+def search(request):
+    result = request.GET['search'].split(',')
+
+    city = result[0]
+    state = result[1]
+    zipcode = result[2]
+    
+    listings_found = Listing.objects.filter(city=city,state=state,zipcode=zipcode)
+
+    if len(listings_found) == 0:
+        print 'NO HOUSES FOUND!'
+    else:
+        print 'LIST OF HOUSES FOUND: {}'.format(listings_found)
+
+    return redirect('main:home')
