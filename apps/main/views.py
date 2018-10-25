@@ -417,5 +417,24 @@ def new_ticket(request):
 
     return redirect('main:contact_us')
 
+<<<<<<< HEAD
 # def search(request):
-#     return redirect('main:catalog')
+#     return redirect('main:catalog')#     return redirect('main:catalog')
+=======
+# search bar
+def search(request):
+    result = request.GET['search'].split(',')
+
+    city = result[0]
+    state = result[1]
+    zipcode = result[2]
+    
+    listings_found = Listing.objects.filter(city=city,state=state,zipcode=zipcode)
+
+    if len(listings_found) == 0:
+        print 'NO HOUSES FOUND!'
+    else:
+        print 'LIST OF HOUSES FOUND: {}'.format(listings_found)
+
+    return redirect('main:home')
+>>>>>>> f895fc941e1ede6093c25e7ca2c7f04f16bb0e9e
