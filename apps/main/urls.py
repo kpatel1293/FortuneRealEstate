@@ -39,12 +39,7 @@ urlpatterns = [
     url(r'^agent/create/new$', views.new_listing, name='new_listing'),              # new listing       - /agent/create/new
     
     url(r'^newticket$', views.new_ticket, name='new_ticket'),                       # new ticket        - /newticket
-<<<<<<< HEAD
     # url(r'^search$', views.search, name='search')                                   # search        - /search
-=======
-    
-    url(r'^search$', views.search, name='search')                        # search            - /search
->>>>>>> f895fc941e1ede6093c25e7ca2c7f04f16bb0e9e
 ]
 
 # IMAGE
