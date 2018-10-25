@@ -241,6 +241,21 @@ def catalog(request):
         message = ''
         count = len(listing)
     
+    arr = []
+    listArr = []
+
+    for l in listing:
+        if len(arr) == 3:
+            listArr.append(arr)
+            arr = []
+
+        arr.append(l)
+
+    if len(arr) != 0:
+        listArr.append(arr)
+        arr = []
+        
+    print listArr
 
     context = {
         'check_session': check_session,
@@ -248,7 +263,8 @@ def catalog(request):
         'user': user,
         'listing': listing,
         'message': message,
-        'count': count
+        'count': count,
+        'listArr': listArr
     }
 
     return render(request,'catalog.html',context)

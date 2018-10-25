@@ -42,102 +42,35 @@
             <!-- Catalog Grid -->
 
             <div class="grid-container">
-                <div class="is-row">
-                    {% for l in listing %}
-                    <div class="listing is-col">
-                        <div class="thumbnail-container">
-                            <img class="listing-thumbnail" src="{{l.image}}">
-                            <p class="price">${{l.price}}</p>
-                        </div>
-                        <div class="information-panel is-row">
-                            <div class="is-col">
-                                <p><span class="bold">Bedrooms: </span>{{l.bedrooms}}</p>
-                            </div>
-                            <div class="is-col">
-                                <p><span class="bold">Bathrooms: </span>{{l.bathrooms}}</p>
-                            </div>
-                            <div class="is-col">
-                                <p><span class="bold">Size: </span>{{l.sq_footage}} sqft</p>
-                            </div>
-                        </div>
-                        <div class="information-panel">
-                             <p class="catalog-address">{{l.addressOne}}, {{l.city}}, {{l.state}}, {{l.zipcode}}</p>
-                        </div>
-                        <div class="information-panel">
-                            <p class="cotalog-contact"><a href="/contact">Contact Us</a></p>
-                        </div>
-                    </div> 
-                    {% endfor %}
-                    <!-- <div class="listing is-col">
-                        <div class="thumbnail-container">
-                            <img class="listing-thumbnail" src="../static/images/thumbnail.jpeg">
-                            <p class="price">$325,000</p>
-                        </div>
-                        <div class="information-panel is-row">
-                            <div class="is-col">
-                                <p><span class="bold">Bedrooms: </span>3</p>
-                            </div>
-                            <div class="is-col">
-                                <p><span class="bold">Bathrooms: </span> 2+</p>
-                            </div>
-                            <div class="is-col">
-                                <p><span class="bold">Size: </span>3,500 sqft</p>
-                            </div>
-                        </div>
-                        <div class="information-panel">
-                             <p class="catalog-address">1234 Example Way, New York, NY, 10015</p>
-                        </div>
-                        <div class="information-panel">
-                            <p class="cotalog-contact"><a href="/contact">Contact Us</a></p>
-                        </div>
+                {% for list in listArr %}
+                    <div class="is-row">
+                        {% for l in list %}
+                            <div class="listing is-col">
+                                <div class="thumbnail-container">
+                                    <img class="listing-thumbnail" src="{{l.image}}">
+                                    <p class="price">${{l.price}}</p>
+                                </div>
+                                <div class="information-panel is-row">
+                                    <div class="is-col">
+                                        <p><span class="bold">Bedrooms: </span>{{l.bedrooms}}</p>
+                                    </div>
+                                    <div class="is-col">
+                                        <p><span class="bold">Bathrooms: </span>{{l.bathrooms}}</p>
+                                    </div>
+                                    <div class="is-col">
+                                        <p><span class="bold">Size: </span>{{l.sq_footage}} sqft</p>
+                                    </div>
+                                </div>
+                                <div class="information-panel">
+                                    <p class="catalog-address">{{l.addressOne}}, {{l.city}}, {{l.state}}, {{l.zipcode}}</p>
+                                </div>
+                                <div class="information-panel">
+                                    <p class="cotalog-contact"><a href="/contact">Contact Us</a></p>
+                                </div>
+                            </div> 
+                        {% endfor %}
                     </div>
-                    <div class="listing is-col">
-                        <div class="thumbnail-container">
-                            <img class="listing-thumbnail" src="../static/images/thumbnail.jpeg">
-                            <p class="price">$325,000</p>
-                        </div>
-                        <div class="information-panel is-row">
-                            <div class="is-col">
-                                <p><span class="bold">Bedrooms: </span>3</p>
-                            </div>
-                            <div class="is-col">
-                                <p><span class="bold">Bathrooms: </span> 2+</p>
-                            </div>
-                            <div class="is-col">
-                                <p><span class="bold">Size: </span>3,500 sqft</p>
-                            </div>
-                        </div>
-                        <div class="information-panel">
-                             <p class="catalog-address">1234 Example Way, New York, NY, 10015</p>
-                        </div>
-                        <div class="information-panel">
-                            <p class="cotalog-contact"><a href="/contact">Contact Us</a></p>
-                        </div>
-                    </div>
-                    <div class="listing is-col">
-                        <div class="thumbnail-container">
-                            <img class="listing-thumbnail" src="../static/images/thumbnail.jpeg">
-                            <p class="price">$325,000</p>
-                        </div>
-                        <div class="information-panel is-row">
-                            <div class="is-col">
-                                <p><span class="bold">Bedrooms: </span>3</p>
-                            </div>
-                            <div class="is-col">
-                                <p><span class="bold">Bathrooms: </span> 2+</p>
-                            </div>
-                            <div class="is-col">
-                                <p><span class="bold">Size: </span>3,500 sqft</p>
-                            </div>
-                        </div>
-                        <div class="information-panel">
-                             <p class="catalog-address">1234 Example Way, New York, NY, 10015</p>
-                        </div>
-                        <div class="information-panel">
-                            <p class="cotalog-contact"><a href="/contact">Contact Us</a></p>
-                        </div>
-                    </div>-->
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
