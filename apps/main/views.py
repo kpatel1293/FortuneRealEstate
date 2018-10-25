@@ -26,6 +26,12 @@ def home(request):
     else:
         user = ''
 
+    # LISTINGS
+    # ...recently added
+
+    # ...featured home
+    # ...most affordable homes
+
     context = {
         'check_session': check_session,
         'show_head': show_dash_head,
@@ -419,7 +425,7 @@ def new_ticket(request):
 
 <<<<<<< HEAD
 # def search(request):
-#     return redirect('main:catalog')#     return redirect('main:catalog')
+#     return redirect('main:catalog')
 =======
 # search bar
 def search(request):
