@@ -199,34 +199,53 @@ def ticket(request):
     return render(request, 'contact-tickets.html',context)
 
 # catalog - /catalog
-# def catalog(request):
-    # check_session = False
-    # # check if user in session
-    # if 'user_id' in request.session:
-    #     check_session = True
+def catalog(request):
+    check_session = False
+    # check if user in session
+    if 'user_id' in request.session:
+        check_session = True
         
-    # show_dash_head = False
+    show_dash_head = False
 
-    # if check_session:
-    #     # get user name
-    #     user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
-    #     user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
-    # else:
-    #     user = ''
+    if check_session:
+        # get user name
+        user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+        user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+    else:
+        user = ''
 
-    # # get all listings
-    # # listing = Listing.objects.values().all()
-    # # print listing
+    if len(request.GET['search']) != 0:
+        message = 'Currently showing listings in: {}'.format(request.GET['search'])
+        search = (request.GET['search']).split(', ')
+
+        if len(search) == 3:
+            # search database
+            listing = Listing.objects.filter(city=search[0],state=search[1],zipcode=search[2])
+
+            count = len(listing)
+        else:
+            # get all listings
+            listing = Listing.objects.values().all()
+            message = ''
+            count = len(listing)
+
+    else:
+        # get all listings
+        listing = Listing.objects.values().all()
+        message = ''
+        count = len(listing)
     
-    # context = {
-    #     'check_session': check_session,
-    #     'show_head': show_dash_head,
-    #     'user': user,
-    #     # 'listing': listing
-    # }
 
+    context = {
+        'check_session': check_session,
+        'show_head': show_dash_head,
+        'user': user,
+        'listing': listing,
+        'message': message,
+        'count': count
+    }
 
-    # return render(request,'catalog.html',context)
+    return render(request,'catalog.html',context)
     # return redirect('/comingsoon')
 
 # contact us - /contact
@@ -397,3 +416,6 @@ def new_ticket(request):
         return redirect('main:contact_us')
 
     return redirect('main:contact_us')
+
+# def search(request):
+#     return redirect('main:catalog')
