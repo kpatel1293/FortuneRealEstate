@@ -38,7 +38,9 @@ urlpatterns = [
     url(r'^logout$', views.logout, name='logout'),                                  # logout user       - /logout
     url(r'^agent/create/new$', views.new_listing, name='new_listing'),              # new listing       - /agent/create/new
     
-    url(r'^newticket$', views.new_ticket, name='new_ticket')                        # new ticket        - /newticket
+    url(r'^newticket$', views.new_ticket, name='new_ticket'),                       # new ticket        - /newticket
+    
+    url(r'^search$', views.search, name='search')                        # search            - /search
 ]
 
 # IMAGE
