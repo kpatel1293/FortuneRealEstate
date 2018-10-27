@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Create Listing - Fortune Real Estate</title>
+        <title>Listing - Fortune Real Estate</title>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,10 +16,49 @@
         {% include "includes/header.html" %}
 
         <!-- Page Body -->
-        {% for list in listing %}
-            <p>{{list}}</p>
-        {% endfor %}
-
+        <div class="container is-container">
+            <div class="billboard is-white-background">
+                <div class="is-center is-90">
+                    <p class="billboard-title">Listings</p>
+                    <p class="billboard-summary">This contains the listings currently available to users.</p>
+                </div>
+                <div>
+                    <table class="is-center is-90 is-border is-striped">
+                        <thead>
+                            <tr>
+                                <th>Address One</th>
+                                <th>Address Two</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Zipcode</th>
+                                <th>Price</th>
+                                <th>Listing Type</th>
+                                <!-- <th>Bed Rooms</th>
+                                <th>Sq Footage</th>
+                                <th>Lot Size</th>
+                                <th>Description</th>
+                                <th>Created By</th> -->
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for list in listing %}
+                            <tr>
+                                <td> {{list.addressOne}} </td>
+                                <td> {{list.addressTwo}} </td>
+                                <td> {{list.city}} </td>
+                                <td> {{list.state}} </td>
+                                <td> {{list.zipcode}} </td>
+                                <td> ${{list.price}} </td>
+                                <td> {{list.listing}} </td>
+                                <td><a class="button is-primary" href="/comingsoon">Edit</a>  <a class="button is-secondary" href="/agent/delete/{{list.id}}">Delete</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
         <!-- Kube framework's JavaScript -->
         <script src="../static/js/kube.min.js"></script>

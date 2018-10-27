@@ -17,8 +17,11 @@ urlpatterns = [
 
     # AGENT
 
-    # url(r'^agent/listing$', views.listings, name='listings'),                       # listings          - /agent/listing
+    url(r'^agent/listing$', views.listings, name='listings'),                       # listings          - /agent/listing
     url(r'^agent/create$', views.create_listing, name='create_listing'),            # create listing    - /agent/create
+    # url(r'^edit/(?P<listing_id>\d+)', views.edit_listing, name='edit_listing'),
+    # url(r'^agent/edit/(?P<listing_id>\d+)', views.edit_form_listing, name='edit_listing'),
+    url(r'^agent/delete/(?P<listing_id>\d+)', views.delete_listing, name='delete_listing'),
 
     # ADMIN
 
@@ -38,8 +41,7 @@ urlpatterns = [
     url(r'^logout$', views.logout, name='logout'),                                  # logout user       - /logout
     url(r'^agent/create/new$', views.new_listing, name='new_listing'),              # new listing       - /agent/create/new
     
-    url(r'^newticket$', views.new_ticket, name='new_ticket'),                       # new ticket        - /newticket
-    # url(r'^search$', views.search, name='search')                                   # search        - /search
+    url(r'^newticket$', views.new_ticket, name='new_ticket')                       # new ticket        - /newticket
 ]
 
 # IMAGE
