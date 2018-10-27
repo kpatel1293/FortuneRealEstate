@@ -67,13 +67,39 @@
                                 <div class="information-panel">
                                     <p class="cotalog-contact"><a href="/contact">Contact Us</a></p>
                                 </div>
-                            </div> 
+                            </div>
                         {% endfor %}
                     </div>
                 {% endfor %}
             </div>
         </div>
     </div>
+
+    <!-- jQuery -->
+
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+
+    <!-- Catalog Page JavaScript -->
+
+    <script>
+
+        function setThumbnailHeight() {
+            // Get the height from the current width of listing-thumbnail images
+            let width = $('.listing-thumbnail').width();
+
+            // Choose a height that we like relative to the width
+            let height = (width * 0.66)
+
+            // Manually change the CSS height property to match the width that we want
+            $('.listing-thumbnail').css("height", height);
+        }
+
+        // Adjust the thumbnail height when the page loads
+        $(document).ready(setThumbnailHeight);
+
+        // Adjust the thumbnail height when the window is resized
+        $(window).resize(setThumbnailHeight);
+    </script>
 
     <!-- Kube framework's JavaScript -->
     <script src="../static/js/kube.min.js"></script>
