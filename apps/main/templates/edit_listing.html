@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Edit Listing - Fortune Real Estate</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Kube CSS -->
+        <link rel="stylesheet" href="../static/css/kube.css">
+
+    </head>
+    <body class="grey-background">
+
+        <!-- Navigation Bar -->
+        {% include "includes/header.html" %}
+
+        <!-- Page Body -->
+
+        <div class="container is-container">
+            <div class="listing-form-container is-shadow-2 is-border">
+                <h1>Edit a Listing</h1>
+                <form method="post" action="/agent/edit/{{listing.id}}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="is-row">
+                        <div class="is-col" id="left-panel">
+                            <h2>Configuration</h2>
+                            <fieldset>
+                                <legend>ADDRESS</legend>
+                                <div class="form-item">
+                                    <label>Address Line 1 <span class="is-req">*</span></label>
+                                    <input type="text" name="addressLine1" placeholder="1234 Example St." value="{{listing.addressOne}}">
+                                </div>
+                                <div class="form-item">
+                                    <label>Address Line 2</label>
+                                    <input type="text" name="addressLine2" placeholder="Apartment, suite, unit number" value="{{listing.addressTwo}}">
+                                </div>
+                                <div class="is-row">
+                                    <div class="form-item is-col is-50">
+                                        <label>City <span class="is-req">*</span></label>
+                                        <input type="text" name="city" placeholder="City" value="{{listing.city}}">
+                                    </div>
+                                    <div class="form-item is-col">
+                                        <label>State <span class="is-req">*</span></label>
+                                        <input type="text" name="state" placeholder="State" value="{{listing.state}}"> 
+                                    </div>
+                                    <div class="form-item is-col">
+                                        <label>ZIP Code <span class="is-req">*</span></label>
+                                        <input type="text" name="zip" placeholder="ZIP Code" value="{{listing.zipcode}}">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>DETAILS</legend>
+                                <div class="is-row">
+                                    <div class="form-item is-col">
+                                        <label>Price <span class="is-req">*</span></label>
+                                        <input type="text" name="price" placeholder="$10,000; 10,000; 10000" value="{{listing.price}}">
+                                    </div>
+                                    <div class="form-item is-col">
+                                        <label>Listing Type <span class="is-req">*</span></label>
+                                        <select name="listing-type">
+                                            <option value="Single-Family Home">Single-Family Home</option>
+                                            <option value="Apartment">Apartment</option>
+                                            <option value="Condo">Condo</option>
+                                            <option value="Townhouse">Townhouse</option>
+                                            <option value="Land">Land</option>
+                                            <option value="Multi-Family Home">Multi-Family Home</option>
+                                            <option value="Farm/Ranch">Farm/Ranch</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="is-row">
+                                    <div class="form-item is-col">
+                                        <label>Bedrooms</label>
+                                        <input type="text" name="bedrooms" placeholder="Number of bedrooms" value="{{listing.bedrooms}}">
+                                    </div>
+                                    <div class="form-item is-col">
+                                        <label>Bathrooms</label>
+                                        <input type="text" name="bathrooms" placeholder="Number of bathrooms" value="{{listing.bathrooms}}">
+                                    </div>
+                                </div>
+                                <div class="is-row">
+                                    <div class="form-item is-col">
+                                        <label>Square Footage</label>
+                                        <input type="text" name="sqFootage" placeholder="Interior size in square feet" value="{{listing.sq_footage}}">
+                                    </div>
+                                    <div class="form-item is-col">
+                                        <label>Lot Size</label>
+                                        <input type="text" name="lotSize" placeholder="Lot size in acres" value="{{listing.lot_size}}">
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <label>Description</label>
+                                    <textarea name="desc" rows="5" placeholder="Any other notable details about the listing...">{{listing.desc}}</textarea>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="is-col">
+                            <h2>Thumbnail</h2>
+                            <fieldset>
+                                <legend>UPLOAD THUMBNAIL</legend>
+                                <div class="form-item"> 
+                                    <input type="file" name="img_file" >
+                                </div>
+                            </fieldset>
+                            <hr class="is-border"/>
+                            <h2>Submission</h2>
+                            <div class="form-item">
+                                <input class="button" type="submit" value="Update Listing">
+                            </div>
+                            <p>Clicking "Create Listing" will save and publish this listing. You can edit or remove the listing at any time.</p>
+                            <hr class="is-border"/>
+                            <div class="form-item">
+                                <a class="button is-secondary is-100" href="/dashboard">Cancel</a>
+                            </div>
+                            <p>Clicking "Cancel" will erase all of the data on this form and send you back to the Listings page.</p>
+                            <!-- validations -->
+                            {% if messages %}
+                                <div class="messages alert is-error">
+                                    {% for message in messages %}
+                                        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+       
+
+        <!-- Kube framework's JavaScript -->
+        <script src="../static/js/kube.min.js"></script>
+        <script>
+            $K.init();
+        </script>
+    </body>
+</html>

@@ -28,7 +28,6 @@ def home(request):
 
     # LISTINGS
     # ...recently added
-
     # ...featured home
     # ...most affordable homes
 
@@ -99,39 +98,37 @@ def dashboard(request):
 # AGENT
 
 # listings - /agent/listing
-# def listings(request):
-    # check_session = False
+def listings(request):
+    check_session = False
 
-    # # check if user in session
-    # if 'user_id' not in request.session:
-    #     return redirect('main:home')
+    # check if user in session
+    if 'user_id' not in request.session:
+        return redirect('main:home')
 
-    # check_session = True
-    # show_dash_head = True
+    check_session = True
+    show_dash_head = True
 
-    # # check user role
-    # user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
-    # if user_role != 'G':
-    #     return redirect('main:dashboard')
+    # check user role
+    user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
+    if user_role != 'G':
+        return redirect('main:dashboard')
     
-    # # get user name
-    # user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
-    # user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+    # get user name
+    user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+    user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
 
-    # # get all listings
-    # # listing = Listing.objects.values().all()
-    # # print listing
+    # get all listings
+    listing = Listing.objects.values().all()
 
-    # context = {
-    #     'check_session': check_session,
-    #     'show_head': show_dash_head,
-    #     'user_role': user_role,
-    #     'user': user,
-    #     # 'listing': listing
-    # }
+    context = {
+        'check_session': check_session,
+        'show_head': show_dash_head,
+        'user_role': user_role,
+        'user': user,
+        'listing': listing
+    }
 
-    # return redirect('/comingsoon')
-    # return render(request, 'listings.html',context)
+    return render(request, 'listings.html',context)
 
 # create listing - /agent/create
 def create_listing(request):
@@ -153,8 +150,6 @@ def create_listing(request):
     user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
     user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
 
-    print Listing.objects.all()
-
     context = {
         'check_session': check_session,
         'show_head': show_dash_head,
@@ -164,6 +159,47 @@ def create_listing(request):
 
     # return redirect('/comingsoon')
     return render(request, 'create_listing.html',context)
+
+# edit listing - /edit/:id
+# def edit_listing(request,listing_id):
+    # check_session = False
+
+    # # check if user in session
+    # if 'user_id' not in request.session:
+    #     return redirect('main:home')
+
+    # check_session = True
+    # show_dash_head = True
+
+    # # check user role
+    # user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
+    # if user_role != 'G':
+    #     return redirect('main:dashboard')
+    
+    # # get user name
+    # user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+    # user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+
+    # listing = Listing.objects.get(id=listing_id)
+
+    # context = {
+    #     'check_session': check_session,
+    #     'show_head': show_dash_head,
+    #     'user_role': user_role,
+    #     'user': user,
+    #     'listing': listing
+    # }
+
+    # return redirect('/comingsoon')
+    # return render(request, 'edit_listing.html',context)
+
+
+# delete listing - /agent/delete/:id
+def delete_listing(request, listing_id):
+    # find listing and delete
+    found_listing = Listing.objects.get(id=listing_id).delete()
+
+    return redirect('main:listings')
 
 # ADMIN
 
@@ -192,7 +228,6 @@ def ticket(request):
 
     # get contact tickets
     get_contact = ContactTicket.objects.all()
-    print get_contact
 
     context = {
         'check_session': check_session,
@@ -245,7 +280,7 @@ def catalog(request):
     listArr = []
 
     for l in listing:
-        if len(arr) == 3:
+        if len(arr) == 4:
             listArr.append(arr)
             arr = []
 
@@ -268,7 +303,6 @@ def catalog(request):
     }
 
     return render(request,'catalog.html',context)
-    # return redirect('/comingsoon')
 
 # contact us - /contact
 def contact_us(request):
@@ -358,13 +392,11 @@ def validatelogin(request):
     if not valid:
         for e in result:
             messages.error(request, e)
-            print e
         # if there are errors return back to login page 
         return redirect('main:login')   
 
     # store/print user in session
     request.session['user_id'] = result
-    print request.session['user_id']
     
     # check for type of user - user/admin/agent
 
@@ -376,8 +408,6 @@ def create(request):
     # validate users
     valid, result = User.objects.validateRegister(request.POST)
 
-    print valid
-
     # check for errors
     if not valid:
         for e in result:
@@ -387,7 +417,6 @@ def create(request):
 
     # store/print user in session
     request.session['user_id'] = result
-    print request.session['user_id']
 
     # redirect to user dashboard
     return redirect('main:dashboard')
@@ -408,12 +437,9 @@ def new_listing(request):
     fs = FileSystemStorage()
     filename = fs.save(myFile.name, myFile)
     uploaded_file_url = fs.url(filename)
-    print uploaded_file_url
 
     # validate listing
     valid, result = Listing.objects.create_listing(request.POST, user, uploaded_file_url)
-
-    print valid
 
     # check for errors
     if not valid:
@@ -424,11 +450,28 @@ def new_listing(request):
 
     return redirect('main:create_listing')
 
+# new listing - /agent/edit/:id
+# def edit_form_listing(request,listing_id):
+#     # store user in session
+#     user = request.session['user_id']
+
+#     uploaded_file_url = Listing.objects.values('image').get(id=listing_id)
+#     print uploaded_file_url['image']
+#     # validate listing
+#     valid, result = Listing.objects.edit_listing(request.POST,listing_id,user,uploaded_file_url)
+
+#     # check for errors
+#     if not valid:
+#         for e in result:
+#             messages.error(request, e)
+#         # if there are errors return back to listing page
+#         return redirect('main:listings')
+
+#     return redirect('main:listings')
+
 def new_ticket(request):
     # validate users
     valid, result = ContactTicket.objects.validateTicket(request.POST)
-
-    print valid
 
     # check for errors
     if not valid:
@@ -438,6 +481,3 @@ def new_ticket(request):
         return redirect('main:contact_us')
 
     return redirect('main:contact_us')
-
-# def search(request):
-#     return redirect('main:catalog')
