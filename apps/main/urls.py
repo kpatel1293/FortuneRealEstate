@@ -31,7 +31,8 @@ urlpatterns = [
     # configure - /admin/config
     url(r'^admin/ticket$', views.ticket, name='ticket'),                            # contact ticket    - /admin/ticket
     
-    url(r'^catalog$', views.catalog, name='catalog'),                               # catalog           - /catalog
+    url(r'^search$', views.search, name='search'),                               # catalog           - /catalog
+    url(r'^catalog$', views.catalog, name='catalog'),                               # catalog           - /catalog    
     url(r'^contact$', views.contact_us, name='contact_us'),                         # contact us        - /contact
     # url(r'^privacy$', views.privacy, name='privacy'),                               # privacy           - /privacy
     # url(r'^termsofservice$', views.terms_of_service, name='terms_of_service'),      # terms of service  - /termsofservice
@@ -42,8 +43,4 @@ urlpatterns = [
     url(r'^agent/create/new$', views.new_listing, name='new_listing'),              # new listing       - /agent/create/new
     
     url(r'^newticket$', views.new_ticket, name='new_ticket')                       # new ticket        - /newticket
-]
-
-# IMAGE
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -240,7 +240,7 @@ def ticket(request):
     return render(request, 'contact-tickets.html',context)
 
 # catalog - /catalog
-def catalog(request):
+def search(request):
     check_session = False
     # check if user in session
     if 'user_id' in request.session:
@@ -275,6 +275,53 @@ def catalog(request):
         listing = Listing.objects.values().all()
         message = ''
         count = len(listing)
+    
+    arr = []
+    listArr = []
+
+    for l in listing:
+        if len(arr) == 4:
+            listArr.append(arr)
+            arr = []
+
+        arr.append(l)
+
+    if len(arr) != 0:
+        listArr.append(arr)
+        arr = []
+        
+    print listArr
+
+    context = {
+        'check_session': check_session,
+        'show_head': show_dash_head,
+        'user': user,
+        'listing': listing,
+        'message': message,
+        'count': count,
+        'listArr': listArr
+    }
+
+    return render(request,'catalog.html',context)
+
+def catalog(request):
+    check_session = False
+    # check if user in session
+    if 'user_id' in request.session:
+        check_session = True
+        
+    show_dash_head = False
+
+    if check_session:
+        # get user name
+        user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+        user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+    else:
+        user = ''
+
+    listing = Listing.objects.values().all()
+    message = ''
+    count = len(listing)
     
     arr = []
     listArr = []
