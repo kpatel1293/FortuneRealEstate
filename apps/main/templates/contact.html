@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Contact Us - Fortune Real Estate</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Kube CSS -->
+        <link rel="stylesheet" href="../static/css/kube.css">
+
+    </head>
+    <body class="grey-background">
+
+        <!-- Navigation Bar -->
+        {% include "includes/header.html" %}
+
+        <!-- Page Body -->
+
+        <div class="container is-white-background">
+
+            <!-- Contact Search Billboard -->
+
+            <div class="contact-search-billboard billboard">
+                <h1>Looking for details about a listing?</h1>
+                <h2>Our online catalog might already have the information you're looking for. Use the search bar below to get started.</h2>
+                <!-- Search Form -->
+                <form>
+                    <div class="home-search form-item">
+                        <div class="is-append is-center is-65">
+                            <input type="text" class="is-search" placeholder="City, State, ZIP Code">
+                            <button class="button">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Contact Information and Form -->
+
+            <div class="contact-billboard">
+                <div class="is-row is-center is-75">
+                    <!-- Contact Information Section -->
+
+                    <div class="is-col is-50">
+                        <div class="contact-information-container">
+                            <h2>Sales</h2>
+                            <div class="contact-type">
+                                <div class="is-row">
+                                    <div class="is-col is-20">
+                                        <h3>Email</h3>
+                                    </div>
+                                    <div class="is-col is-80">
+                                        <p>sales@fortunerealestate.com</p>
+                                    </div>
+                                </div>
+                                <div class="is-row">
+                                    <div class="is-col is-20">
+                                        <h3>Phone</h3>
+                                    </div>
+                                    <div class="is-col is-80">
+                                        <p>1 (800) 000-0000</p>
+                                    </div>
+                                </div>
+                                <div class="is-row">
+                                    <div class="is-col is-20">
+                                        <h3>Address</h3>
+                                    </div>
+                                    <div class="is-col is-80">
+                                        <p>1234 Example Avenue, New York, NY, 10025</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h2>Clients</h2>
+                            <div class="contact-type">
+                                <div class="is-row">
+                                    <div class="is-col is-20">
+                                        <h3>Email</h3>
+                                    </div>
+                                    <div class="is-col is-80">
+                                        <p>client@fortunerealestate.com</p>
+                                    </div>
+                                </div>
+                                <div class="is-row">
+                                    <div class="is-col is-20">
+                                        <h3>Phone</h3>
+                                    </div>
+                                    <div class="is-col is-80">
+                                        <p>1 (800) 000-0000</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h2>Agents</h2>
+                            <div class="contact-type">
+                                <div class="is-row">
+                                    <div class="is-col is-20">
+                                        <h3>Email</h3>
+                                    </div>
+                                    <div class="is-col is-80">
+                                        <p>agent@fortunerealestate.com</p>
+                                    </div>
+                                </div>
+                                <div class="is-row">
+                                    <div class="is-col is-20">
+                                        <h3>Phone</h3>
+                                    </div>
+                                    <div class="is-col is-80">
+                                        <p>1 (800) 000-0000</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+
+                    <div class="is-col is-50">
+                        <div class="contact-form-container is-shadow-3">
+                            <h1>Contact Us</h1>
+                            <form method="post" action="">
+                                <div class="is-row">
+                                    <div class="form-item is-col is-50">
+                                        <label>Name <span class="is-req">*</span></label>
+                                        <input type="text" name="name" placeholder="John Doe">
+                                    </div>
+                                    <div class="form-item is-col">
+                                        <label>Phone</label>
+                                        <input type="text" name="phone" placeholder="(123) 456-7890">
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <label>Email</label>
+                                    <input type="email" name="email" placeholder="johndoe@example.com">
+                                </div>
+                                <div class="form-item">
+                                    <label>Message</label>
+                                    <textarea rows="5" placeholder="Enter your message to us here."></textarea>
+                                </div>
+                                <input type="submit" class="button" value="Send Message">
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-list">
+                <a href="">Contact Us</a><a href="">Privacy</a><a href="">Terms of Service</a>
+            </div>
+            <p>Copyright &copy; 2018 Real Estate Company. All rights reserved. </p>
+        </footer>
+        <!-- Kube framework's JavaScript -->
+        <script src="../static/js/kube.min.js"></script>
+        <script>
+            $K.init();
+        </script>
+    </body>
+</html>

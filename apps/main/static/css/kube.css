@@ -5039,6 +5039,87 @@ Matthew Brewer - 9/20/2018
 .catalog-container .grid-container .listing .information-panel a {
   text-decoration: none; }
 
+/* line 2, ../sass/custom/listing.scss */
+.listing-details-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  margin-top: 15px;
+  padding: 0;
+  background-color: #fff; }
+
+/* line 11, ../sass/custom/listing.scss */
+.listing-details-container .details-listing-thumbnail {
+  width: 100%;
+  height: 100%;
+  max-height: 495px; }
+
+/* line 17, ../sass/custom/listing.scss */
+.listing-details-container .details-contact-form-container {
+  margin: 0;
+  padding: 25px; }
+
+/* line 22, ../sass/custom/listing.scss */
+.listing-details-container .details-contact-form-container h2 {
+  width: 100%;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 400; }
+
+/* line 29, ../sass/custom/listing.scss */
+.listing-details-container #listing-details {
+  border-bottom: 1px solid #E0E0E0; }
+
+/* line 37, ../sass/custom/listing.scss */
+.listing-details-container #listing-details #detail-list p {
+  margin: 0;
+  line-height: 22px;
+  font-size: 18px;
+  padding: 15px 0;
+  text-align: center; }
+
+/* line 45, ../sass/custom/listing.scss */
+.listing-details-container #listing-details #detail-list #price {
+  font-size: 24px;
+  font-weight: 400; }
+
+/* line 50, ../sass/custom/listing.scss */
+.listing-details-container #listing-details #detail-list p span {
+  font-weight: 500; }
+
+/* line 54, ../sass/custom/listing.scss */
+.listing-details-container #listing-address {
+  padding: 15px;
+  margin: 0;
+  border-bottom: 1px solid #E0E0E0; }
+
+/* line 60, ../sass/custom/listing.scss */
+.listing-details-container #listing-address p {
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0; }
+
+/* line 66, ../sass/custom/listing.scss */
+.listing-details-container #listing-address p span {
+  font-weight: 500; }
+
+/* line 70, ../sass/custom/listing.scss */
+.listing-details-container #listing-description {
+  padding: 15px; }
+
+/* line 74, ../sass/custom/listing.scss */
+.listing-details-container #listing-description h2 {
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 10px;
+  font-weight: 500; }
+
+/* line 81, ../sass/custom/listing.scss */
+.listing-details-container #listing-description p {
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0; }
+
 /* line 20, ../sass/custom.scss */
 .container {
   padding: 0 0 15px 0;
