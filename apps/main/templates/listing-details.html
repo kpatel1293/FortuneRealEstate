@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <title>Catalog - Fortune Real Estate</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Kube CSS -->
+    <link rel="stylesheet" href="../static/css/kube.css">
+
+</head>
+<body class="grey-background">
+
+    <!-- Navigation Bar -->
+    {% include "includes/header.html" %}
+
+    <!-- Page Body -->
+    <div class="listing-details-container is-shadow-2">
+        <div class="is-row">
+            <div class="is-col is-70">
+                <img class="details-listing-thumbnail" src="../static/images//thumbnail3.jpeg">
+            </div>
+            <div class="details-contact-form-container is-col is-30">
+            <h2>Contact Agent</h2>
+                <form method="post" action="">
+                    <div class="is-row">
+                        <div class="form-item is-col is-50">
+                            <label>Name <span class="is-req">*</span></label>
+                            <input type="text" name="name" placeholder="John Doe">
+                        </div>
+                        <div class="form-item is-col">
+                            <label>Phone</label>
+                            <input type="text" name="phone" placeholder="(123) 456-7890">
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="johndoe@example.com">
+                    </div>
+                    <div class="form-item">
+                        <label>Message</label>
+                        <textarea rows="5" placeholder="Enter your message to us here."></textarea>
+                    </div>
+                    <input type="submit" class="button" value="Send Message">
+                </form>
+            </div>
+        </div>
+        <div id="listing-details">
+            <div id="detail-list" class="is-row is-70">
+                <div class="is-col">
+                    <p id="price">$500,000</p>
+                </div>
+                <div class="is-col">
+                    <p><span>Bedrooms: </span>5</p>
+                </div>
+                <div class="is-col">
+                    <p><span>Bathrooms: </span>5</p>
+                </div>
+                <div class="is-col">
+                    <p><span>Square Ft: </span>3,500</p>
+                </div>
+                <div class="is-col">
+                    <p><span>Lot Acres: </span>0.75</p>
+                </div>
+            </div>
+        </div>
+        <div id="listing-address">
+            <p id="address"><span>1234 Example Listing Way</span> New York, NY, 10000</p>
+        </div>
+        <div id="listing-description">
+            <h2>Description</h2>
+            <p>This is an incredibly unique opportunity to purchase this custom built home in New york, NY! Firmly positoned within an excellent neighborhood and zoned for excellent schools, this is a great home for families. This home also has rare architectural amenities such as full-length windows and an ageless aesthetic.</p>
+        </div>
+    </div>
+    <!-- jQuery -->
+
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+
+
+    <!-- Kube framework's JavaScript -->
+    <script src="../static/js/kube.min.js"></script>
+    <script>
+        $K.init();
+    </script>
+</body>
+</html>
