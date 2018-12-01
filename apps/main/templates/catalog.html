@@ -1,122 +1,122 @@
 <!doctype html>
 <html>
-<head>
-    <title>Catalog - Fortune Real Estate</title>
+    <head>
+        <title>Catalog - Fortune Real Estate</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Kube CSS -->
-    <link rel="stylesheet" href="../static/css/kube.css">
-</head>
-<body>
+        <!-- Kube CSS -->
+        <link rel="stylesheet" href="../static/css/kube.css">
+    </head>
+    <body>
 
-    <!-- Navigation Bar -->
-    {% include "includes/header.html" %}
+        <!-- Navigation Bar -->
+        {% include "includes/header.html" %}
 
-    <!-- Page Body -->
-    <div class="container">
+        <!-- Page Body -->
+        <div class="container">
 
-        <div class="catalog-container">
+            <div class="catalog-container">
 
-            <h1 class="catalog-results">{{message}}</h1>
-            <p class="results-found">{{count}} listing(s) were found.</p>
-            <!-- Catalog Search / Filter / Navigation -->
+                <h1 class="catalog-results">{{message}}</h1>
+                <p class="results-found">{{count}} listing(s) were found.</p>
+                <!-- Catalog Search / Filter / Navigation -->
 
-            <div class="catalog-navbar">
-                <div class="is-row">
-                    <div class="form-item is-col">
-                        <form action="/search">
-                            <div class="is-append">
-                                <input type="text" class="is-search" placeholder="Address, City, State, ZIP Code" name="search">
-                                <button class="button">Search</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="is-col">
-                        <button class="button is-secondary" data-kube="dropdown" data-target="#filter-dropdown">Sort By <span class="caret is-down"></span></button>
+                <div class="catalog-navbar">
+                    <div class="is-row">
+                        <div class="form-item is-col">
+                            <form action="/search">
+                                <div class="is-append">
+                                    <input type="text" class="is-search" placeholder="Address, City, State, ZIP Code" name="search">
+                                    <button class="button">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="is-col">
+                            <button class="button is-secondary" data-kube="dropdown" data-target="#filter-dropdown">Sort By <span class="caret is-down"></span></button>                    
+                        </div>
                     </div>
                 </div>
-            </div>
+                
+                <!-- Filter Dropdown -->
 
-            <!-- Filter Dropdown -->
+                <div id="filter-dropdown" class="dropdown is-hidden">
+                    <a href="/leastexpensive">Least Expensive</a>
+                    <a href="/mostexpensive">Most Expensive</a>
+                    <a href="/recentlyadded">Recently Added</a>
+                    <a href="/largestinterior">Largest Interior</a>
+                    <a href="/smallestinterior">Smallest Interior</a>
+                    <a href="/mostbedrooms">Most Bedrooms</a>
+                    <a href="/leastbedrooms">Least Bedrooms</a>
+                </div>
 
-            <div id="filter-dropdown" class="dropdown is-hidden">
-                <a href="">Least Expensive</a>
-                <a href="">Most Expensive</a>
-                <a href="">Recently Added</a>
-                <a href="">Largest Interior</a>
-                <a href="">Smallest Interior</a>
-                <a href="">Most Bedrooms</a>
-                <a href="">Least Bedrooms</a>
-            </div>
+                <!-- Catalog Grid -->
 
-            <!-- Catalog Grid -->
-
-            <div class="grid-container">
-                {% for list in listArr %}
-                    <div class="is-row">
-                        {% for l in list %}
-                            <div class="listing is-col">
-                                <div class="thumbnail-container">
-                                    <img class="listing-thumbnail" src="{{l.image}}">
-                                    <p class="price">${{l.price}}</p>
-                                </div>
-                                <div class="information-panel is-row">
-                                    <div class="is-col">
-                                        <p><span class="bold">Bedrooms: </span>{{l.bedrooms}}</p>
+                <div class="grid-container">
+                    {% for list in listArr %}
+                        <div class="is-row">
+                            {% for l in list %}
+                                <div class="listing is-col">
+                                    <div class="thumbnail-container" onclick="location.href='/catalog/{{l.id}}';">
+                                        <img class="listing-thumbnail" src="{{l.image}}">
+                                        <p class="price">${{l.price}}</p>
                                     </div>
-                                    <div class="is-col">
-                                        <p><span class="bold">Bathrooms: </span>{{l.bathrooms}}</p>
+                                    <div class="information-panel is-row">
+                                        <div class="is-col">
+                                            <p><span class="bold">Bedrooms: </span>{{l.bedrooms}}</p>
+                                        </div>
+                                        <div class="is-col">
+                                            <p><span class="bold">Bathrooms: </span>{{l.bathrooms}}</p>
+                                        </div>
+                                        <div class="is-col">
+                                            <p><span class="bold">Size: </span>{{l.sq_footage}} sqft</p>
+                                        </div>
                                     </div>
-                                    <div class="is-col">
-                                        <p><span class="bold">Size: </span>{{l.sq_footage}} sqft</p>
+                                    <div class="information-panel">
+                                        <p class="catalog-address">{{l.addressOne}}, {{l.city}}, {{l.state}}, {{l.zipcode}}</p>
+                                    </div>
+                                    <div class="information-panel">
+                                        <p class="cotalog-contact"><a href="/contact">Contact Us</a></p>
                                     </div>
                                 </div>
-                                <div class="information-panel">
-                                    <p class="catalog-address">{{l.addressOne}}, {{l.city}}, {{l.state}}, {{l.zipcode}}</p>
-                                </div>
-                                <div class="information-panel">
-                                    <p class="cotalog-contact"><a href="/contact">Contact Us</a></p>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- jQuery -->
+        <!-- jQuery -->
 
-    <script src="../static/js/jquery-3.3.1.min.js"></script>
+        <script src="../static/js/jquery-3.3.1.min.js"></script>
 
-    <!-- Catalog Page JavaScript -->
+        <!-- Catalog Page JavaScript -->
 
-    <script>
+        <script>
 
-        function setThumbnailHeight() {
-            // Get the height from the current width of listing-thumbnail images
-            let width = $('.listing-thumbnail').width();
+            function setThumbnailHeight() {
+                // Get the height from the current width of listing-thumbnail images
+                let width = $('.listing-thumbnail').width();
 
-            // Choose a height that we like relative to the width
-            let height = (width * 0.66)
+                // Choose a height that we like relative to the width
+                let height = (width * 0.66)
 
-            // Manually change the CSS height property to match the width that we want
-            $('.listing-thumbnail').css("height", height);
-        }
+                // Manually change the CSS height property to match the width that we want
+                $('.listing-thumbnail').css("height", height);
+            }
 
-        // Adjust the thumbnail height when the page loads
-        $(document).ready(setThumbnailHeight);
+            // Adjust the thumbnail height when the page loads
+            $(document).ready(setThumbnailHeight);
 
-        // Adjust the thumbnail height when the window is resized
-        $(window).resize(setThumbnailHeight);
-    </script>
+            // Adjust the thumbnail height when the window is resized
+            $(window).resize(setThumbnailHeight);
+        </script>
 
-    <!-- Kube framework's JavaScript -->
-    <script src="../static/js/kube.min.js"></script>
-    <script>
-        $K.init();
-    </script>
-</body>
+        <!-- Kube framework's JavaScript -->
+        <script src="../static/js/kube.min.js"></script>
+        <script>
+            $K.init();
+        </script>
+    </body>
 </html>

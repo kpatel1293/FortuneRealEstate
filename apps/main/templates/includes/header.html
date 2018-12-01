@@ -60,9 +60,10 @@
             <nav class="is-center">
                 <ul>
                     <li><a href="/dashboard">Dashboard</a></li>
-                    {% if user_role == 'G' %}
+                    {% if user_role == 'G' or user_role == 'A' %}
                         <li><a data-kube="dropdown" data-target="#agent-dropdown" href="">Agent<span class="caret is-down"></span></a></li>
-                    {% elif user_role == 'A' %}
+                    {% endif %}                    
+                    {% if user_role == 'A' %}
                         <li><a data-kube="dropdown" data-target="#admin-dropdown" href="">Admin<span class="caret is-down"></span></a></li>
                     {% endif %}
                     <li><a href="/dashboard">Settings</a></li>
@@ -86,6 +87,8 @@
 <div id="agent-dropdown" class="dropdown is-hidden">
     <a href="/agent/listing">Listings</a>
     <a href="/agent/create">Create Listing</a>
+    <!-- TEMPORARY -->
+    <a href="/agent/conact-listing">Agent Contact Listing</a>
 </div>
 
 <!-- Admin Panel Dropdown -->

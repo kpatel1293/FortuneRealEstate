@@ -19,11 +19,19 @@
     <div class="listing-details-container is-shadow-2">
         <div class="is-row">
             <div class="is-col is-70">
-                <img class="details-listing-thumbnail" src="../static/images//thumbnail3.jpeg">
+                <img class="details-listing-thumbnail" src="{{listing.image}}">
             </div>
             <div class="details-contact-form-container is-col is-30">
-            <h2>Contact Agent</h2>
-                <form method="post" action="">
+            <h2>Contact Agent</h2>                <!-- validations -->
+                {% if messages %}
+                    <div class="messages alert is-error">
+                        {% for message in messages %}
+                            <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <form method="post" action="/catalog/{{listing.id}}/ticket">
+                    {% csrf_token %}
                     <div class="is-row">
                         <div class="form-item is-col is-50">
                             <label>Name <span class="is-req">*</span></label>
@@ -40,7 +48,7 @@
                     </div>
                     <div class="form-item">
                         <label>Message</label>
-                        <textarea rows="5" placeholder="Enter your message to us here."></textarea>
+                        <textarea rows="5" name="message" placeholder="Enter your message to us here."></textarea>
                     </div>
                     <input type="submit" class="button" value="Send Message">
                 </form>
@@ -49,28 +57,28 @@
         <div id="listing-details">
             <div id="detail-list" class="is-row is-70">
                 <div class="is-col">
-                    <p id="price">$500,000</p>
+                    <p id="price">${{listing.price}}</p>
                 </div>
                 <div class="is-col">
-                    <p><span>Bedrooms: </span>5</p>
+                    <p><span>Bedrooms: </span>{{listing.bedrooms}}</p>
                 </div>
                 <div class="is-col">
-                    <p><span>Bathrooms: </span>5</p>
+                    <p><span>Bathrooms: </span>{{listing.bathrooms}}</p>
                 </div>
                 <div class="is-col">
-                    <p><span>Square Ft: </span>3,500</p>
+                    <p><span>Square Ft: </span>{{listing.sq_footage}}</p>
                 </div>
                 <div class="is-col">
-                    <p><span>Lot Acres: </span>0.75</p>
+                    <p><span>Lot Acres: </span>{{listing.lot_size}}</p>
                 </div>
             </div>
         </div>
         <div id="listing-address">
-            <p id="address"><span>1234 Example Listing Way</span> New York, NY, 10000</p>
+            <p id="address"><span>{{listing.addressOne}}</span> {{listing.city}}, {{listing.state}}, {{listing.zipcode}}</p>
         </div>
         <div id="listing-description">
             <h2>Description</h2>
-            <p>This is an incredibly unique opportunity to purchase this custom built home in New york, NY! Firmly positoned within an excellent neighborhood and zoned for excellent schools, this is a great home for families. This home also has rare architectural amenities such as full-length windows and an ageless aesthetic.</p>
+            <p>{{listing.desc}}</p>
         </div>
     </div>
     <!-- jQuery -->

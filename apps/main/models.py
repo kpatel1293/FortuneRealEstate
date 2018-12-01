@@ -103,11 +103,11 @@ class User(models.Model):
     def __str__(self):
         return self.email
 
-# USER
-# user manager
+# CONTACT US
+# contact ticket manager
 class ContactTicketManager(models.Manager):
     # validate ticket
-    def validateTicket(self,form_data):
+    def validateTicket(self,form_data,contactType):
         # empty errors list
         errors = []
 
@@ -136,17 +136,23 @@ class ContactTicketManager(models.Manager):
             return (False, errors)
 
         # store user to database
-        add_ticket = self.create(name=form_data['name'],email=form_data['email'],phone=form_data['phone'],message=form_data['message'])
+        add_ticket = self.create(name=form_data['name'],email=form_data['email'],phone=form_data['phone'],message=form_data['message'],contact_type=contactType)
         print 'ADDED TICKET SUCCESSFULLY! This is the ticket: {}'.format(add_ticket)
 
         return (True, add_ticket.id)
 
 # contact ticket table
 class ContactTicket(models.Model):
+    CONTACT_TYPE_CHOICES = (
+        ('A', 'ADMIN'),
+        ('G', 'AGENT'),
+    )
+
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)                                 
     message = models.TextField()
+    contact_type = models.CharField(max_length=1, choices=CONTACT_TYPE_CHOICES)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -178,7 +184,7 @@ class ListingManager(models.Manager):
             errors.append('Enter the abbreviation of the state only!')
         # ...check state is valid or not
         list_of_state = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
-        
+
         found = False
         for list in list_of_state:
             if form_data['state'] == list:
@@ -200,6 +206,14 @@ class ListingManager(models.Manager):
         # ...price
         if len(form_data['price']) == 0:
             errors.append('Price can not be left empty!')
+        
+        format_price = (form_data['price']).split(',')
+
+        if len(form_data) > 1:
+            price = "".join(format_price)
+        else:
+            price = form_data['price']
+
         # ...bedrooms
         if len(form_data['bedrooms']) == 0:
             errors.append('Bedroooms can not be left empty!')
@@ -212,14 +226,16 @@ class ListingManager(models.Manager):
         # ...lot size
         if len(form_data['lotSize']) == 0:
             errors.append('Lot size can not be left empty!')
+        # ...image
+        if image_path == 'no image uploaded':
+            errors.append('Must upload image!')
         
         # check if any errors
         if errors: # if true, display errors
             return (False, errors)
 
         # store listing to database
-        create_listing = self.create(addressOne=form_data['addressLine1'],addressTwo=form_data['addressLine2'],city=form_data['city'],state=form_data['state'],zipcode=form_data['zip'],price=form_data['price'],listing=form_data['listing-type'],bedrooms=form_data['bedrooms'],bathrooms=form_data['bathrooms'],sq_footage=form_data['sqFootage'],lot_size=form_data['lotSize'],desc=form_data['desc'],agentId=User.objects.get(id=user_id),image=image_path)
-        # ,image=form_data['thumbnail']
+        create_listing = self.create(addressOne=form_data['addressLine1'],addressTwo=form_data['addressLine2'],city=form_data['city'],state=form_data['state'],zipcode=form_data['zip'],price=price,listing=form_data['listing-type'],bedrooms=form_data['bedrooms'],bathrooms=form_data['bathrooms'],sq_footage=form_data['sqFootage'],lot_size=form_data['lotSize'],desc=form_data['desc'],agentId=User.objects.get(id=user_id),image=image_path)
 
         print 'ADDED LISTING SUCCESSFULLY! This is the address: {}'.format(create_listing)
 
@@ -285,9 +301,9 @@ class ListingManager(models.Manager):
         # store listing to database
         edit_listing = self.filter(id=listing_id,agentId=user_id).update(addressOne=form_data['addressLine1'],addressTwo=form_data['addressLine2'],city=form_data['city'],state=form_data['state'],zipcode=form_data['zip'],price=form_data['price'],listing=form_data['listing-type'],bedrooms=form_data['bedrooms'],bathrooms=form_data['bathrooms'],sq_footage=form_data['sqFootage'],lot_size=form_data['lotSize'],desc=form_data['desc'],agentId=User.objects.get(id=user_id),image=image_path)
 
-        print 'ADDED LISTING SUCCESSFULLY! This is the address: {}'.format(edit_listing)
+        print 'EDITED LISTING SUCCESSFULLY! This is the listing id: {}!'.format(listing_id)
 
-        return True
+        return (True, edit_listing)
 
 
 # listing table
@@ -307,15 +323,15 @@ class Listing(models.Model):
     addressTwo = models.CharField(max_length=255)  
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255) 
-    zipcode = models.IntegerField()
+    zipcode = models.CharField(max_length=255)
     
     # Details
-    price = models.CharField(max_length=255)
+    price = models.IntegerField()
     listing = models.CharField(max_length=1, choices=LISTING_CHOICES)
     bedrooms = models.IntegerField()
     bathrooms = models.FloatField()
     sq_footage = models.IntegerField()
-    lot_size = models.IntegerField()
+    lot_size = models.FloatField()
     desc = models.TextField()
     agentId = models.ForeignKey(User, related_name="agent_id")
     
@@ -330,13 +346,3 @@ class Listing(models.Model):
 
     def __str__(self):
         return self.addressOne
-
-# IMAGE
-# image manager
-
-# image table
-# class Images(models.Model):
-#     fileName = models.CharField(max_length=255)
-#     path = models.CharField(max_length=255)
-#     active = models.IntegerField()
-#     listingId = models.ForeignKey(Listing, related_name="listing_id")

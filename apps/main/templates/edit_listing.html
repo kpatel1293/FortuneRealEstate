@@ -20,7 +20,7 @@
         <div class="container is-container">
             <div class="listing-form-container is-shadow-2 is-border">
                 <h1>Edit a Listing</h1>
-                <form method="post" action="/agent/edit/{{listing.id}}" enctype="multipart/form-data">
+                <form method="post" action="/update/{{listing.id}}" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="is-row">
                         <div class="is-col" id="left-panel">
@@ -101,7 +101,7 @@
                             <fieldset>
                                 <legend>UPLOAD THUMBNAIL</legend>
                                 <div class="form-item"> 
-                                    <input type="file" name="img_file" >
+                                    <input type="file" name="thumbnail" >
                                 </div>
                             </fieldset>
                             <hr class="is-border"/>
