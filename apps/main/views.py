@@ -234,7 +234,6 @@ def edit_listing(request,listing_id):
 
     return render(request, 'edit_listing.html',context)
 
-
 # delete listing - /agent/delete/:id
 def delete_listing(request, listing_id):
     # find listing and delete
@@ -245,6 +244,36 @@ def delete_listing(request, listing_id):
 # ADMIN
 
 # users (view all users) - /admin/show
+# def view_all_user(request):
+#     check_session = False
+
+#     # check if user in session
+#     if 'user_id' not in request.session:
+#         return redirect('main:home')
+
+#     check_session = True
+#     show_dash_head = True
+
+#     # check user role
+#     user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
+    
+#     # get user name
+#     user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+#     user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+
+#     all_user = User.objects.values().all()
+#     print all_user
+
+#     # context = {
+#     #     'check_session': check_session,
+#     #     'show_head': show_dash_head,
+#     #     'user_role': user_role,
+#     #     'user': user
+#     # }
+
+#     # return render(request, 'dashboard.html',context)
+#     return redirect('main:dashboard')
+
 # create user - /admin/user
 # activity - /admin/activity
 # configure - /admin/config
@@ -298,49 +327,48 @@ def search(request):
 
     list_of_states = (('AL', 'Alabama'), ('AZ', 'Arizona'), ('AR', 'Arkansas'), ('CA', 'California'), ('CO', 'Colorado'), ('CT', 'Connecticut'), ('DE', 'Delaware'), ('DC', 'District of Columbia'), ('FL', 'Florida'), ('GA', 'Georgia'), ('ID', 'Idaho'), ('IL', 'Illinois'), ('IN', 'Indiana'), ('IA', 'Iowa'), ('KS', 'Kansas'), ('KY', 'Kentucky'), ('LA', 'Louisiana'), ('ME', 'Maine'), ('MD', 'Maryland'), ('MA', 'Massachusetts'), ('MI', 'Michigan'), ('MN', 'Minnesota'), ('MS', 'Mississippi'), ('MO', 'Missouri'), ('MT', 'Montana'), ('NE', 'Nebraska'), ('NV', 'Nevada'), ('NH', 'New Hampshire'), ('NJ', 'New Jersey'), ('NM', 'New Mexico'), ('NY', 'New York'), ('NC', 'North Carolina'), ('ND', 'North Dakota'), ('OH', 'Ohio'), ('OK', 'Oklahoma'), ('OR', 'Oregon'), ('PA', 'Pennsylvania'), ('RI', 'Rhode Island'), ('SC', 'South Carolina'), ('SD', 'South Dakota'), ('TN', 'Tennessee'), ('TX', 'Texas'), ('UT', 'Utah'), ('VT', 'Vermont'), ('VA', 'Virginia'), ('WA', 'Washington'), ('WV', 'West Virginia'), ('WI', 'Wisconsin'), ('WY', 'Wyoming'))
 
+    print request.GET['search']
+
     if len(request.GET['search']) != 0:
         message = 'Currently showing listings in: {}'.format(request.GET['search'])
-        search = (request.GET['search']).split(', ')
+        search = (request.GET['search']).split(',')
 
         if len(search) == 4:
             # search database
-            listing = Listing.objects.filter(addressOne__contains=search[0],city__contains=search[1],state__contains=search[2],zipcode=search[3])
+            listing = Listing.objects.filter(addressOne__iexact=search[0],city__iexact=search[1],state__iexact=search[2],zipcode=search[3])
 
             count = len(listing)
         elif len(search) == 3:
             # search database
-            listing = Listing.objects.filter(city__contains=search[0],state__contains=search[1],zipcode=search[2])
+            listing = Listing.objects.filter(city__iexact=search[0],state__iexact=search[1],zipcode=search[2])
 
             count = len(listing)
         elif len(search) == 1:
-            listing = Listing.objects.filter(addressOne__contains=search[0])
-
+            listing = Listing.objects.filter(addressOne__iexact=search[0])
             if len(listing) == 0:
-                listing = Listing.objects.filter(city__contains=search[0])
+                listing = Listing.objects.filter(city__iexact=search[0])
                 if len(listing) == 0:
-                    listing = Listing.objects.filter(state__contains=search[0])
+                    listing = Listing.objects.filter(state__iexact=search[0])
 
                     if len(listing) == 0:
                         for key in list_of_states:
                             if (key[1]).lower() == (search[0]).lower():
-                                listing = Listing.objects.filter(state__contains=key[0])
+                                listing = Listing.objects.filter(state__iexact=key[0])
                                 break
                         if len(listing) == 0:
                             listing = Listing.objects.filter(zipcode=search[0])
 
-
-            print listing
             count = len(listing)
         elif len(search) == 2:
             # city and state
-            listing = Listing.objects.filter(city__contains=search[0],state__contains=search[1])
+            listing = Listing.objects.filter(city__iexact=search[0],state__iexact=search[1])
                 
             # city and zip
             if len(listing) == 0:
                 listing = Listing.objects.filter(city=search[0],zipcode=search[1])
                 # state and zip
                 if len(listing) == 0:
-                    listing = Listing.objects.filter(state__contains=search[0],zipcode=search[1])
+                    listing = Listing.objects.filter(state__iexact=search[0],zipcode=search[1])
 
             count = len(listing)
         else:
@@ -359,7 +387,7 @@ def search(request):
     listArr = []
 
     for l in listing:
-        if len(arr) == 4:
+        if len(arr) == 3:
             listArr.append(arr)
             arr = []
 
@@ -408,7 +436,7 @@ def leastExpensive(request):
     listArr = []
 
     for l in listing:
-        if len(arr) == 4:
+        if len(arr) == 3:
             listArr.append(arr)
             arr = []
 
@@ -458,7 +486,7 @@ def mostExpensive(request):
     listArr = []
 
     for l in listing:
-        if len(arr) == 4:
+        if len(arr) == 3:
             listArr.append(arr)
             arr = []
 
@@ -508,7 +536,7 @@ def recentlyAdded(request):
     listArr = []
 
     for l in listing:
-        if len(arr) == 4:
+        if len(arr) == 3:
             listArr.append(arr)
             arr = []
 
@@ -558,7 +586,7 @@ def largestInterior(request):
     listArr = []
 
     for l in listing:
-        if len(arr) == 4:
+        if len(arr) == 3:
             listArr.append(arr)
             arr = []
 
@@ -608,7 +636,7 @@ def smallestInterior(request):
     listArr = []
 
     for l in listing:
-        if len(arr) == 4:
+        if len(arr) == 3:
             listArr.append(arr)
             arr = []
 
@@ -658,7 +686,7 @@ def mostBedrooms(request):
     listArr = []
 
     for l in listing:
-        if len(arr) == 4:
+        if len(arr) == 3:
             listArr.append(arr)
             arr = []
 
@@ -708,7 +736,7 @@ def leastBedrooms(request):
     listArr = []
 
     for l in listing:
-        if len(arr) == 4:
+        if len(arr) == 3:
             listArr.append(arr)
             arr = []
 
@@ -755,7 +783,7 @@ def catalog(request):
     listArr = []
 
     for l in listing:
-        if len(arr) == 4:
+        if len(arr) == 3:
             listArr.append(arr)
             arr = []
 
@@ -765,7 +793,8 @@ def catalog(request):
         listArr.append(arr)
         arr = []
         
-    print listArr
+    price = str(listArr[0][0]['price'])
+    print price
 
     context = {
         'check_session': check_session,
@@ -816,14 +845,16 @@ def privacy(request):
         # get user name
         user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
         user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
-        print user
     else:
         user = ''
+
+    ip_address = '13.59.206.20'
 
     context = {
         'check_session': check_session,
         'show_head': show_dash_head,
-        'user': user
+        'user': user,
+        'ip': ip_address
     }
 
     return render(request,'privacy.html',context)
@@ -841,14 +872,16 @@ def terms_of_service(request):
         # get user name
         user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
         user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
-        print user
     else:
         user = ''
+
+    ip_address = '13.59.206.20'
 
     context = {
         'check_session': check_session,
         'show_head': show_dash_head,
-        'user': user
+        'user': user,
+        'ip': ip_address
     }
 
     return render(request,'terms_of_service.html',context)
@@ -865,7 +898,6 @@ def coming_soon(request):
         # get user name
         user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
         user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
-        print user
     else:
         user = ''
 
@@ -891,6 +923,7 @@ def listing_details(request, listing_id):
         return redirect('main:listings')
 
     check_session = False
+    
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
@@ -932,8 +965,6 @@ def validatelogin(request):
     # store/print user in session
     request.session['user_id'] = result
     
-    # check for type of user - user/admin/agent
-
     # redirect to dashboard accordingly
     return redirect('main:dashboard')
 
@@ -963,63 +994,50 @@ def logout(request):
 
 # new listing - /agent/create/new
 def new_listing(request):
-    # store user in session
-    user = request.session['user_id']
-
     # get image path
     if len(request.FILES) == 0:
         uploaded_file_url = 'no image uploaded'
     else:
-        # get image path
-        myFile = request.FILES['thumbnail']
         fs = FileSystemStorage()
-        filename = fs.save(myFile.name, myFile)
+        filename = fs.save(request.FILES['thumbnail'].name, request.FILES['thumbnail'])
         uploaded_file_url = fs.url(filename)
 
     # validate listing
-    valid, result = Listing.objects.create_listing(request.POST, user, uploaded_file_url)
+    valid, result = Listing.objects.create_listing(request.POST, request.session['user_id'], uploaded_file_url)
 
     # check for errors
     if not valid:
         for e in result:
             messages.error(request, e)
-        # if there are errors return back to listing page
         return redirect('main:create_listing')
 
     return redirect('main:create_listing')
 
 # update listing - /agent/edit/:id
 def update_listing(request,listing_id):
-    # store user in session
-    user = request.session['user_id']
-
+    # check if image is changed
     if len(request.FILES) == 0:
-        getListing = Listing.objects.values('image').get(id=listing_id)
-        uploaded_file_url = (getListing['image']).split('\'')[0]
+        uploaded_file_url = (Listing.objects.values('image').get(id=listing_id))['image']
     else:
         # get image path
-        myFile = request.FILES['thumbnail']
         fs = FileSystemStorage()
-        filename = fs.save(myFile.name, myFile)
+        filename = fs.save(request.FILES['thumbnail'].name, request.FILES['thumbnail'])
         uploaded_file_url = fs.url(filename)
 
     #  validate listing
-    valid, result = Listing.objects.edit_listing(request.POST, listing_id, user, uploaded_file_url)
+    valid, result = Listing.objects.edit_listing(request.POST, listing_id, request.session['user_id'], uploaded_file_url)
 
     # check for errors
     if not valid:
         for e in result:
             messages.error(request, e)
-        # if there are errors return back to listing page
         return redirect('/edit/{}'.format(listing_id))
 
     return redirect('main:listings')
 
 def new_ticket(request):
-    # get contact type
-    type_contact = 'A'
     # validate ticket
-    valid, result = ContactTicket.objects.validateTicket(request.POST, type_contact)
+    valid, result = ContactTicket.objects.validateTicket(request.POST, 'A')
 
     # check for errors
     if not valid:
@@ -1031,10 +1049,8 @@ def new_ticket(request):
     return redirect('main:contact_us')
 
 def contact_agent_ticket(request,listing_id):
-    # get contact type
-    type_contact = 'G'
     # validate ticket
-    valid, result = ContactTicket.objects.validateTicket(request.POST, type_contact)
+    valid, result = ContactTicket.objects.validateTicket(request.POST, 'G')
 
     # check for errors
     if not valid:

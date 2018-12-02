@@ -27,6 +27,7 @@ urlpatterns = [
     # ADMIN
 
     # users (view all users) - /admin/show
+    # url(r'^admin/show$', views.view_all_user, name='show_all_users'),
     # create user - /admin/user
     # activity - /admin/activity
     # configure - /admin/config

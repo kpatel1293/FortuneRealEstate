@@ -281,6 +281,15 @@ class ListingManager(models.Manager):
         # ...price
         if len(form_data['price']) == 0:
             errors.append('Price can not be left empty!')
+
+        format_price = (form_data['price']).split(',')
+
+        try_price = ("".join(format_price)).split('.')
+        price = try_price[0]
+
+        # new_price = format_price.split('.')
+        print (''.join(format_price)).split('.')
+        
         # ...bedrooms
         if len(form_data['bedrooms']) == 0:
             errors.append('Bedroooms can not be left empty!')
@@ -299,7 +308,7 @@ class ListingManager(models.Manager):
             return (False, errors)
 
         # store listing to database
-        edit_listing = self.filter(id=listing_id,agentId=user_id).update(addressOne=form_data['addressLine1'],addressTwo=form_data['addressLine2'],city=form_data['city'],state=form_data['state'],zipcode=form_data['zip'],price=form_data['price'],listing=form_data['listing-type'],bedrooms=form_data['bedrooms'],bathrooms=form_data['bathrooms'],sq_footage=form_data['sqFootage'],lot_size=form_data['lotSize'],desc=form_data['desc'],agentId=User.objects.get(id=user_id),image=image_path)
+        edit_listing = self.filter(id=listing_id,agentId=user_id).update(addressOne=form_data['addressLine1'],addressTwo=form_data['addressLine2'],city=form_data['city'],state=form_data['state'],zipcode=form_data['zip'],price=price,listing=form_data['listing-type'],bedrooms=form_data['bedrooms'],bathrooms=form_data['bathrooms'],sq_footage=form_data['sqFootage'],lot_size=form_data['lotSize'],desc=form_data['desc'],agentId=User.objects.get(id=user_id),image=image_path)
 
         print 'EDITED LISTING SUCCESSFULLY! This is the listing id: {}!'.format(listing_id)
 
