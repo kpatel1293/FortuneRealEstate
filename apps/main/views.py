@@ -848,7 +848,7 @@ def privacy(request):
     else:
         user = ''
 
-    ip_address = '13.59.206.20'
+    ip_address = '18.191.214.58'
 
     context = {
         'check_session': check_session,
@@ -875,7 +875,7 @@ def terms_of_service(request):
     else:
         user = ''
 
-    ip_address = '13.59.206.20'
+    ip_address = '18.191.214.58'
 
     context = {
         'check_session': check_session,
