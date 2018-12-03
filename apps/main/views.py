@@ -160,6 +160,7 @@ def create_listing(request):
     # return redirect('/comingsoon')
     return render(request, 'create_listing.html',context)
 
+# agent contact listing
 def agent_contact_listing(request):
     check_session = False
 
