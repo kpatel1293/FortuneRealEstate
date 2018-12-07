@@ -12,11 +12,11 @@ from django.core.files.storage import FileSystemStorage
 # home - /
 def home(request):
     check_session = False
+    show_dash_head = False
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-    
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -313,11 +313,12 @@ def ticket(request):
 # catalog - /catalog
 def search(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-        
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -414,11 +415,12 @@ def search(request):
 # Least Expensive
 def leastExpensive(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-        
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -464,11 +466,12 @@ def leastExpensive(request):
 # Most Expensive
 def mostExpensive(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-        
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -514,11 +517,12 @@ def mostExpensive(request):
 # Recently Added
 def recentlyAdded(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-        
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -564,11 +568,12 @@ def recentlyAdded(request):
 # Largest Interior
 def largestInterior(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-        
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -614,11 +619,12 @@ def largestInterior(request):
 # Smallest Interior
 def smallestInterior(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-        
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -664,11 +670,12 @@ def smallestInterior(request):
 # Most Bedrooms
 def mostBedrooms(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-        
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -714,11 +721,12 @@ def mostBedrooms(request):
 # Least Bedrooms
 def leastBedrooms(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-        
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -763,11 +771,12 @@ def leastBedrooms(request):
 
 def catalog(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-        
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -812,11 +821,12 @@ def catalog(request):
 # contact us - /contact
 def contact_us(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-        
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -836,11 +846,12 @@ def contact_us(request):
 # privacy - /privacy
 def privacy(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-    
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -863,12 +874,13 @@ def privacy(request):
 # terms of service - /termsofservice
 def terms_of_service(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-    
-    show_dash_head = False
-
+        show_dash_head = True
+        
     if check_session:
         # get user name
         user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
@@ -889,11 +901,12 @@ def terms_of_service(request):
 
 def coming_soon(request):
     check_session = False
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-    
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
@@ -924,12 +937,12 @@ def listing_details(request, listing_id):
         return redirect('main:listings')
 
     check_session = False
-    
+    show_dash_head = False
+
     # check if user in session
     if 'user_id' in request.session:
         check_session = True
-        
-    show_dash_head = False
+        show_dash_head = True
 
     if check_session:
         # get user name
