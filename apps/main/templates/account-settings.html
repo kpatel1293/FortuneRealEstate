@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Contact Tickets - Fortune Real Estate</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Kube CSS -->
+        <link rel="stylesheet" href="../static/css/kube.css">
+
+    </head>
+    <body class="grey-background">
+
+        <!-- Navigation Bar -->
+        {% include "includes/header.html" %}
+
+        <!-- Page Body -->
+
+        <div class="container">
+            <div class="login-container is-shadow-2 is-border">
+                <h1>Account settings</h1>
+                <form method="post" action="">
+                    <fieldset>
+                        <legend>Personal</legend>
+                        <div class="is-row">
+                            <div class="form-item is-col">
+                                <label>First Name</label>
+                                <input type="text" name="firstName" placeholder="John">
+                            </div>
+                            <div class="form-item is-col">
+                                <label>Last Name</label>
+                                <input type="text" name="lastName" placeholder="Doe">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label>Email Address</label>
+                            <input type="email" name="email" placeholder="johndoe@example.com">
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Password</legend>
+                        <div class="form-item">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="Enter password">
+                        </div>
+                        <div class="form-item">
+                            <label>Confirm Password</label>
+                            <input type="password" name="confirmPassword" placeholder="Confirm password">
+                        </div>
+                    </fieldset>
+                </form>
+                <input class="button" type="submit" value="Update Settings">
+            </div>
+        </div>
+
+
+        <!-- Kube framework's JavaScript -->
+        <script src="../static/js/kube.min.js"></script>
+        <script>
+            $K.init();
+        </script>
+    </body>
+</html>
