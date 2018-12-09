@@ -4769,6 +4769,62 @@ Matthew Brewer - 9/20/2018
 #contact-button {
   float: right; }
 
+/* line 72, ../sass/custom/home.scss */
+.home-list {
+  max-width: 90%;
+  max-height: 420px;
+  margin: auto;
+  padding: 10px; }
+
+/* line 79, ../sass/custom/home.scss */
+.home-list .listing {
+  padding: 5px;
+  max-width: 450px !important;
+  max-height: 405px !important;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  margin-bottom: 15px; }
+
+/* line 88, ../sass/custom/home.scss */
+.home-list .listing:hover {
+  transition: 0.1s linear;
+  border: 1px solid #BDBDBD; }
+
+/* line 93, ../sass/custom/home.scss */
+.home-list .listing .thumbnail-container {
+  position: relative; }
+
+/* line 97, ../sass/custom/home.scss */
+.home-list .listing .listing-thumbnail {
+  width: 100%;
+  height: auto; }
+
+/* line 102, ../sass/custom/home.scss */
+.home-list .listing .price {
+  line-height: 35px;
+  font-weight: 400;
+  font-size: 28px;
+  color: #fff;
+  text-shadow: 0 1px 1px #000;
+  position: absolute;
+  bottom: 5px;
+  left: 15px; }
+
+/* line 117, ../sass/custom/home.scss */
+.home-list .listing .information-panel p {
+  line-height: 35px;
+  font-weight: 400;
+  font-size: 16px;
+  margin: 0; }
+
+/* line 124, ../sass/custom/home.scss */
+.home-list .listing .information-panel p .bold {
+  font-weight: 500; }
+
+/* line 128, ../sass/custom/home.scss */
+.home-list .listing .information-panel a {
+  text-decoration: none; }
+
 /*
 
 Form Stylesheet
