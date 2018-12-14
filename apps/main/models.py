@@ -18,6 +18,7 @@ class UserManager(models.Manager):
         # check wether user exists or not
         try:
             # check for if user exists
+            print User.objects.all()
             check_user = self.get(email=form_data['email'])
             print 'User logged in with : {} & Matched with this many emails : {}'.format(form_data['email'],check_user)
             # if user exists
@@ -124,6 +125,12 @@ class UserManager(models.Manager):
         print 'UPDATED USER SUCCESSFULLY! This is the user: {}'.format(update_user)
 
         return (True, 101)
+
+    def updateRole(self,form_data,user_id):
+        update_role = self.filter(id=user_id).update(permissionLevel=form_data['role'])
+        print 'UPDATED ROLE SUCCESSFULLY! This is the user: {}'.format(user_id)
+
+        return (True, user_id)
 
 # user table
 class User(models.Model):

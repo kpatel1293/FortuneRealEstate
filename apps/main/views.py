@@ -277,40 +277,39 @@ def delete_listing(request, listing_id):
 
 # ADMIN
 
-# users (view all users) - /admin/show
-# def view_all_user(request):
-#     check_session = False
+# users (view all users) - /admin/users
+def view_all_user(request):
+    check_session = False
 
-#     # check if user in session
-#     if 'user_id' not in request.session:
-#         return redirect('main:home')
+    # check if user in session
+    if 'user_id' not in request.session:
+        return redirect('main:home')
 
-#     check_session = True
-#     show_dash_head = True
+    check_session = True
+    show_dash_head = True
 
-#     # check user role
-#     user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
+    # check user role
+    user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
     
-#     # get user name
-#     user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
-#     user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+    if user_role != 'A':
+        return redirect('main:dashboard')
+    
+    # get user name
+    user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+    user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
 
-#     all_user = User.objects.values().all()
-#     print all_user
+    all_user = User.objects.values().all()
 
-#     # context = {
-#     #     'check_session': check_session,
-#     #     'show_head': show_dash_head,
-#     #     'user_role': user_role,
-#     #     'user': user
-#     # }
+    context = {
+        'check_session': check_session,
+        'show_head': show_dash_head,
+        'user_role': user_role,
+        'user': user,
+        'users': all_user
+    }
 
-#     # return render(request, 'dashboard.html',context)
-#     return redirect('main:dashboard')
+    return render(request, 'all-users.html',context)
 
-# create user - /admin/user
-# activity - /admin/activity
-# configure - /admin/config
 
 # ticket - /admin/ticket
 def ticket(request):
@@ -1120,3 +1119,14 @@ def update_user(request, user_id):
 
 
     return redirect('main:settings')
+
+def update_role(request, user_id):
+    print request.POST['role']
+    User.objects.updateRole(request.POST, user_id)
+    
+    return redirect('main:show_all_users')
+
+def delete_user(request, user_id):
+    found_user = User.objects.get(id=user_id).delete()
+
+    return redirect('main:show_all_users')

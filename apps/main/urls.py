@@ -27,8 +27,12 @@ urlpatterns = [
 
     # ADMIN
 
-    # users (view all users) - /admin/show
-    # url(r'^admin/show$', views.view_all_user, name='show_all_users'),
+    # users (view all users) - /admin/users
+    url(r'^admin/users$', views.view_all_user, name='show_all_users'),
+    url(r'^role/(?P<user_id>\d+)$', views.update_role, name='update_role'),
+    # /delete/{{user.id}}
+    url(r'^delete/(?P<user_id>\d+)$', views.delete_user, name='delete_user'),
+
     # create user - /admin/user
     # activity - /admin/activity
     # configure - /admin/config

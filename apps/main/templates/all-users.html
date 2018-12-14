@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Listing - Fortune Real Estate</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Kube CSS -->
+        <link rel="stylesheet" href="../static/css/kube.css">
+
+    </head>
+    <body class="grey-background">
+
+        <!-- Navigation Bar -->
+        {% include "includes/header.html" %}
+
+        <!-- Page Body -->
+        <div class="container is-container">
+            <div class="billboard is-white-background">
+                <div class="is-center is-90">
+                    <p class="billboard-title">Users</p>
+                    <p class="billboard-summary">This contains all the users currently active.</p>
+                </div>
+                <div>
+                    <table class="is-center is-90 is-border is-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                                <tr>
+                                    <td> {{user.id}} </td>
+                                    <td> {{user.firstName}} {{user.lastName}} </td>
+                                    <td> {{user.email}} </td>
+                                    {% if user.permissionLevel == 'A' %}
+                                        <td>Admin</td>
+                                    {% elif user.permissionLevel == 'G' %}
+                                        <td>Agent</td>
+                                    {% else %}
+                                        <td>User</td>
+                                    {% endif %}
+                                    <td>
+                                        <a class="button is-primary" data-kube="toggle" data-target="#box-{{user.id}}">Edit Role</a>  <a class="button is-secondary" href="/delete/{{user.id}}">Delete</a>
+                                        <div id="box-{{user.id}}" class="is-hidden">
+                                            <br>
+                                            <form action="/role/{{user.id}}" method="POST">
+                                                {% csrf_token %}
+                                                <div class="is-container">
+                                                    <select name="role" class="is-50">
+                                                        <option value="A">Admin</option>
+                                                        <option value="G">Agent</option>
+                                                        <option value="U">User</option>
+                                                    </select>
+                                                    <button style="margin-left: 10px;" class="button is-primary">Change Role</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kube framework's JavaScript -->
+        <script src="../static/js/kube.min.js"></script>
+        <script>
+            $K.init();
+        </script>
+    </body>
+</html>
