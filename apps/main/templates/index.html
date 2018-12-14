@@ -43,32 +43,33 @@
         </div>
 
         <!-- Newest Listings Previews Billboard -->
-
         <div class="billboard">
             <h1>Recently Added Homes</h1>
-            <p class="catalog-link"><a id="#link" href="">Search listings by <b>newest first</b>.</a></p>
+            <p class="catalog-link"><a id="#link" href="/recentlyadded">Search listings by <b>newest first</b>.</a></p>
 
             <div class="home-list grid-container is-row"> <!-- listing row template designed for 4 listings-->
-                <div class="listing is-col"> <!-- listing template -->
-                    <div class="thumbnail-container">
-                        <img class="listing-thumbnail" src="../static/images/thumbnail.jpeg">
-                        <p class="price">$325,000</p>
-                    </div>
-                    <div class="information-panel is-row">
-                        <div class="is-col">
-                            <p><span class="bold">Bedrooms: </span>3</p>
+                {% for home in recently_added_home %}
+                    <div class="listing is-col" onclick="location.href='/catalog/{{ home.id }}';"> <!-- listing template -->
+                        <div class="thumbnail-container">
+                            <img class="listing-thumbnail" src="{{ home.image}}">
+                            <p class="price">$ {{ home.price }}</p>
                         </div>
-                        <div class="is-col">
-                            <p><span class="bold">Bathrooms: </span> 2+</p>
+                        <div class="information-panel is-row">
+                            <div class="is-col">
+                                <p><span class="bold">Bedrooms: </span>{{ home.bedrooms }}</p>
+                            </div>
+                            <div class="is-col">
+                                <p><span class="bold">Bathrooms: </span> {{ home.bathrooms }}</p>
+                            </div>
+                            <div class="is-col">
+                                <p><span class="bold">Size: </span>{{ home.sq_footage }} sqft</p>
+                            </div>
                         </div>
-                        <div class="is-col">
-                            <p><span class="bold">Size: </span>3,500 sqft</p>
+                        <div class="information-panel">
+                            <p class="catalog-address">{{ home.addressOne }}, {{ home.city }}, {{ home.state }}, {{ home.zipcode }}</p>
                         </div>
                     </div>
-                    <div class="information-panel">
-                         <p class="catalog-address">1234 Example Way, New York, NY, 10015</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
 
@@ -76,18 +77,66 @@
 
         <div class="billboard">
             <h1>Featured Homes</h1>
-            <p class="catalog-link"><a id="#link" href="">Search listings by <b>featured</b>.</a></p>
+            <p class="catalog-link"><a id="#link" href="/mostexpensive">Search listings by <b>featured</b>.</a></p>
 
             <!-- listing row goes here -->
+            <div class="home-list grid-container is-row"> <!-- listing row template designed for 4 listings-->
+                {% for home in featured_home %}
+                    <div class="listing is-col" onclick="location.href='/catalog/{{ home.id }}';"> <!-- listing template -->
+                        <div class="thumbnail-container">
+                            <img class="listing-thumbnail" src="{{ home.image}}">
+                            <p class="price">$ {{ home.price }}</p>
+                        </div>
+                        <div class="information-panel is-row">
+                            <div class="is-col">
+                                <p><span class="bold">Bedrooms: </span>{{ home.bedrooms }}</p>
+                            </div>
+                            <div class="is-col">
+                                <p><span class="bold">Bathrooms: </span> {{ home.bathrooms }}</p>
+                            </div>
+                            <div class="is-col">
+                                <p><span class="bold">Size: </span>{{ home.sq_footage }} sqft</p>
+                            </div>
+                        </div>
+                        <div class="information-panel">
+                            <p class="catalog-address">{{ home.addressOne }}, {{ home.city }}, {{ home.state }}, {{ home.zipcode }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
         <!-- Sort by: Least Expensive Homes -->
 
         <div class="billboard">
             <h1>Most Affordable Homes</h1>
-            <p class="catalog-link"><a id="#link" href="">Search listings by <b>most affordable</b>.</a></p>
+            <p class="catalog-link"><a id="#link" href="/leastexpensive">Search listings by <b>most affordable</b>.</a></p>
 
             <!-- listing row goes here -->
+            <div class="home-list grid-container is-row"> <!-- listing row template designed for 4 listings-->
+                {% for home in affordable_home %}
+                    <div class="listing is-col" onclick="location.href='/catalog/{{ home.id }}';"> <!-- listing template -->
+                        <div class="thumbnail-container">
+                            <img class="listing-thumbnail" src="{{ home.image}}">
+                            <p class="price">$ {{ home.price }}</p>
+                        </div>
+                        <div class="information-panel is-row">
+                            <div class="is-col">
+                                <p><span class="bold">Bedrooms: </span>{{ home.bedrooms }}</p>
+                            </div>
+                            <div class="is-col">
+                                <p><span class="bold">Bathrooms: </span> {{ home.bathrooms }}</p>
+                            </div>
+                            <div class="is-col">
+                                <p><span class="bold">Size: </span>{{ home.sq_footage }} sqft</p>
+                            </div>
+                        </div>
+                        <div class="information-panel">
+                            <p class="catalog-address">{{ home.addressOne }}, {{ home.city }}, {{ home.state }}, {{ home.zipcode }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
     </div>

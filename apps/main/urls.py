@@ -13,7 +13,8 @@ urlpatterns = [
     url(r'^dashboard$', views.dashboard, name='dashboard'),                         # dashboard         - /dashboard
     # USER 
 
-    # settings - /settings
+    url(r'^settings$', views.settings, name='settings'),                              # settings - /settings
+    url(r'^settings/(?P<user_id>\d+)$', views.update_user, name='update_settings'),                              # settings - /settings
 
     # AGENT
 

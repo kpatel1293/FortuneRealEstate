@@ -28,13 +28,19 @@ def home(request):
 
     # LISTINGS
     # ...recently added
+    recentlyAdded = Listing.objects.all().order_by('-created_at')[:4]
     # ...featured home
+    featuredHome = Listing.objects.all().order_by('-price')[:4]
     # ...most affordable homes
+    affordableHome = Listing.objects.all().order_by('price')[:4]
 
     context = {
         'check_session': check_session,
         'show_head': show_dash_head,
-        'user': user
+        'user': user,
+        'recently_added_home': recentlyAdded,
+        'featured_home': featuredHome,
+        'affordable_home': affordableHome
     }
 
     return render(request,'index.html',context)
@@ -94,6 +100,33 @@ def dashboard(request):
 # USER 
 
 # settings - /settings
+def settings(request):
+    check_session = False
+
+    # check if user in session
+    if 'user_id' not in request.session:
+        return redirect('main:home')
+
+    check_session = True
+    show_dash_head = True
+
+    # check user role
+    user_role = User.objects.values('permissionLevel').get(id=request.session['user_id'])['permissionLevel']
+    
+    # get user name
+    user_name = User.objects.values('firstName', 'lastName').get(id=request.session['user_id'])
+    user = '{} {}'.format(user_name['firstName'],user_name['lastName'])
+
+    user_active = User.objects.get(id=request.session['user_id'])
+
+    context = {
+        'check_session': check_session,
+        'show_head': show_dash_head,
+        'user_role': user_role,
+        'user': user,
+        'user_active': user_active
+    }
+    return render(request, 'account-settings.html', context)
 
 # AGENT
 
@@ -1073,3 +1106,17 @@ def contact_agent_ticket(request,listing_id):
         return redirect('/catalog/{}'.format(listing_id))
 
     return redirect('/catalog/{}'.format(listing_id))
+
+def update_user(request, user_id):
+    # validate ticket
+    valid, result = User.objects.updateUser(request.POST, user_id)
+
+    # check for errors
+    if not valid:
+        for e in result:
+            messages.error(request, e)
+        # if there are errors return back to registeration page 
+        return redirect('main:settings')
+
+
+    return redirect('main:settings')

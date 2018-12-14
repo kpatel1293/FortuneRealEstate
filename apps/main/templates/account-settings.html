@@ -20,22 +20,23 @@
         <div class="container">
             <div class="login-container is-shadow-2 is-border">
                 <h1>Account settings</h1>
-                <form method="post" action="">
+                <form method="post" action="/settings/{{user_active.id}}">
+                    {% csrf_token %}
                     <fieldset>
                         <legend>Personal</legend>
                         <div class="is-row">
                             <div class="form-item is-col">
                                 <label>First Name</label>
-                                <input type="text" name="firstName" placeholder="John">
+                                <input type="text" name="firstName" value={{user_active.firstName}}>
                             </div>
                             <div class="form-item is-col">
                                 <label>Last Name</label>
-                                <input type="text" name="lastName" placeholder="Doe">
+                                <input type="text" name="lastName" value={{user_active.lastName}}>
                             </div>
                         </div>
                         <div class="form-item">
                             <label>Email Address</label>
-                            <input type="email" name="email" placeholder="johndoe@example.com">
+                            <input type="email" name="email" value={{user_active.email}}>
                         </div>
                     </fieldset>
                     <fieldset>
@@ -49,8 +50,16 @@
                             <input type="password" name="confirmPassword" placeholder="Confirm password">
                         </div>
                     </fieldset>
+                    <input class="button" type="submit" value="Update Settings">
                 </form>
-                <input class="button" type="submit" value="Update Settings">
+                <!-- validations -->
+                {% if messages %}
+                    <div class="messages alert is-error">
+                        {% for message in messages %}
+                            <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
 

@@ -80,6 +80,51 @@ class UserManager(models.Manager):
 
         return (True, add_user.id)
 
+            # validate registeration
+    
+    def updateUser(self,form_data,user_id):
+        # empty errors list
+        errors = []
+
+        # Validate Name
+        # ... check if null or atleast 2 character
+        if len(form_data['firstName']) < 2:
+            errors.append('First name must be at least 2 characters')
+        if len(form_data['lastName']) < 2:
+            errors.append('Last name must be at least 2 characters')
+
+        # Validate email
+        # ... email format
+        if not EMAIL_REGEX.match(form_data['email']):
+            errors.append('Email entered is not valid')
+
+        # Validate password
+        # ... check length of password
+        if len(form_data['password']) != 0:
+            if len(form_data['password']) < 8:
+                errors.append('Password must be atleast 8 characters long')
+            # ... check if password matchs confrim password
+            elif form_data['password'] != form_data['confirmPassword']:
+                errors.append('Passwords must match')
+
+        # check if any errors
+        if errors: # if true, display errors
+            return (False, errors)
+
+
+        # ... hash password
+        if len(form_data['password']) != 0:
+            pwd = form_data['password']
+            hash_pwd = bcrypt.hashpw(pwd.encode(), bcrypt.gensalt())
+        else:
+            hash_pwd = User.objects.values('password').get(id=user_id)
+
+        # store user to database
+        update_user = self.filter(id=user_id).update(firstName=form_data['firstName'],lastName=form_data['lastName'],email=form_data['email'],password=hash_pwd)#,permissionLevel=User.objects.values('permissionLevel').get(id=user_id))
+        print 'UPDATED USER SUCCESSFULLY! This is the user: {}'.format(update_user)
+
+        return (True, 101)
+
 # user table
 class User(models.Model):
     PERMISSION_LEVEL_CHOICES = (
