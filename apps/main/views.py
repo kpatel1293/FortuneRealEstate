@@ -835,8 +835,9 @@ def catalog(request):
         listArr.append(arr)
         arr = []
         
-    price = str(listArr[0][0]['price'])
-    print price
+    if len(listArr) != 0:
+        price = str(listArr[0][0]['price'])
+        print price
 
     context = {
         'check_session': check_session,
